@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require "adminMenuSettings.php" ?>
 <html lang="en">
 
 <head>
@@ -32,7 +33,7 @@
 	<script src="assets/js/app.js"></script>
 	<script src="global_assets/js/demo_pages/datatables_basic.js"></script>
 
-	
+
 	<!-- /theme JS files -->
 </head>
 
@@ -416,14 +417,36 @@
 								</span>
 							</a>
 						</li>
+
+
+
+						<?php foreach ($menuler as $key => $value) : ?>
+
+							<li class="nav-item nav-item-submenu">
+								<a href="#" class="nav-link"><i class="<?= $value['icon'] ?>"></i> <span><?= $value['name'] ?></span></a>
+								<ul class="nav nav-group-sub" data-submenu-title="Layouts">
+									<?php if ($value['subMenu']) : ?>
+										<?php foreach ($value['subMenu'] as $subHref => $subName) : ?>
+
+											<li class="nav-item"><a href="/cms/<?= $subHref ?>" class="nav-link active"><?= $subName ?></a></li>
+										<?php endforeach; ?>
+									<?php endif; ?>
+								</ul>
+							</li>
+
+						<?php endforeach; ?>
+
+<!--
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Kullanıcı Ekle</span></a>
-
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="index.html" class="nav-link active">Yönetici Ekle</a></li>
 								<li class="nav-item"><a href="index.html" class="nav-link active">Kullanıcı Ekle</a></li>
 							</ul>
 						</li>
+
+
+												
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Kategoriler</span></a>
 
@@ -442,6 +465,10 @@
 
 							</ul>
 						</li>
+
+
+
+-->
 
 						<!-- /main -->
 					</ul>

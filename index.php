@@ -21,6 +21,7 @@ Route::run('/post', 'post@kaydet','POST');
 Route::run('/guncelle/{url}', 'post@guncelle','GET');
 Route::run('/blogSayfasi', 'blog@index');
 
+Route::run('/Ayar', 'settings@index');
 
 //Route::run('/uyeler', 'uyeler@index');
 //Route::run('/uyeler','uyeler@post','post');
