@@ -1,7 +1,6 @@
 <?php require 'views/public/header.php'; ?>
     <div class="content">
 
-
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">AYARLAR</h6>
@@ -15,15 +14,20 @@
             </div>
 
             <div class="card-body">
-                <form action="#">
+                <form action="" method="post">
                     <div class="form-group">
-                        <label>Your name:</label>
-                        <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                        <label>Site Adı:</label>
+                        <input type="text" class="form-control" placeholder="" name="settings[title]">
+                    </div>
+                    <div class="form-group">
+                        <label>Site Açıklaması:</label>
+                        <input type="text" class="form-control" placeholder="" name="settings[description]">
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <span><i class="icon-spinner2 spinner mr-2"></i> Processing...</span>
-                        <button type="submit" class="btn bg-blue ml-3">Submit <i class="icon-paperplane ml-2"></i></button>
+                        <input type="hidden" name="submit" value="1">
+                        <button type="submit" class="btn bg-blue ml-3">Kaydet<i class="icon-paperplane ml-2"></i></button>
                     </div>
                 </form>
             </div>

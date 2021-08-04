@@ -1,9 +1,20 @@
 <?php
 
+
 function session($name)
 {
     if (isset($_SESSION[$name])) {
         return $_SESSION[$name];
+    }
+}
+function sPost($name){
+    if(isset($_POST[$name])){
+        if(is_array($_POST[$name])){
+            return array_map(function($item){
+                return htmlspecialchars(trim($item));
+            },$_POST[$name]);
+        return htmlspecialchars(trim($_POST[$name]));
+        }
     }
 }
 
