@@ -1,8 +1,5 @@
 <?php
-
-
 date_default_timezone_set('Europe/Istanbul');
-
 
 
 
@@ -15,14 +12,13 @@ require __DIR__ . '/helper.php';
 
 Route::run('/', 'index@home');
 Route::run('/kullaniciekle', 'user@index');
+Route::run('/kullaniciSubmit', 'user@addUser','POST');
+
 Route::run('/postekle', 'post@index');
 Route::run('/anasayfa', 'blog@index');
 Route::run('/post', 'post@kaydet','POST');
 Route::run('/guncelle/{url}', 'post@guncelle','GET');
 Route::run('/blogSayfasi', 'blog@index');
-
-
-
 
 
 //Route::run('/uyeler', 'uyeler@index');

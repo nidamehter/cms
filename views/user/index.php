@@ -2,18 +2,11 @@
 
 
 
-<!-- Main content -->
 <div class="content-wrapper">
 
     <!-- Page header -->
     <div class="page-header page-header-light">
-        <div class="page-header-content header-elements-md-inline">
-            <div class="page-title d-flex">
-                <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Kullanıcı</span> - Yönetici Ekle</h4>
-                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
-            </div>
 
-        </div>
 
         <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
             <div class="d-flex">
@@ -24,22 +17,21 @@
 
                 <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
             </div>
-
-
         </div>
+
     </div>
     <!-- /page header -->
 
-
     <!-- Content area -->
     <div class="content">
-
         <!-- Form inputs -->
-        <div class="card">
+
+        <div id="form" class="card" style=" margin-right: 10%">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title">Kullanıcı Ekle</h5>
+                <h4 class="card-title"><i class="fas fa-address-card"></i> KULLANICI EKLE </h4>
+
                 <div class="header-elements">
-                    <div class="list-icons">
+                    <div classW="list-icons">
                         <a class="list-icons-item" data-action="collapse"></a>
                         <a class="list-icons-item" data-action="reload"></a>
                         <a class="list-icons-item" data-action="remove"></a>
@@ -47,53 +39,86 @@
                 </div>
             </div>
 
-            <div class="card-body">
+            <div class="card-body" style="margin-left: 1px; height:auto">
 
-                <form action="#">
-                    <fieldset class="mb-3">
-                        <legend class="text-uppercase font-size-sm font-weight-bold">Yönetici Ekle</legend>
+                <div>
+                    <fieldset class="mb-12">
+                        <legend class="text-uppercase font-size-sm font-weight-bold">Gerekli Bilgiler</legend>
 
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Kullanıcı Adı :</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Email :</label>
-                            <div class="col-lg-10">
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Parola :</label>
-                            <div class="col-lg-10">
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Kullanıcı Rol :</label>
-                            <div class="col-lg-10">
-                                <input type="text" class="form-control" placeholder="">
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2">Kullanıcı Adı:</label>
+                            <div class="col-lg-6">
+                                <div class="input-group-prepend">
+                                    <input type="text" class="form-control h-100" v-model="Vname">
+                                    <div class="input-group-text"><i class="fas fa-signature"></i></div>
+                                </div>
                             </div>
                         </div>
 
 
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2">Parola:</label>
+                            <div class="col-lg-6">
+                                <div class="input-group-prepend">
+                                    <input type="password" v-model="Vpass" class="form-control h-100" placeholder="" autocomplete="off">
+                                    <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2">E-Mail:</label>
+                            <div class="col-lg-6">
+                                <div class="input-group-prepend">
+                                    <input type="email" v-model="Vmail" class="form-control h-100" placeholder="" autocomplete="off">
+                                    <div class="input-group-text"><i class="fas fa-at"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2">Rol:</label>
+                            <div class="col-lg-6">
+                                <div class="input-group-prepend">
+                                    <select v-model="Vrole" class="form-select col-form-label col-lg-10 h-100" name="">
+                                        <option value="-1">--- Rol Seçiniz ---</option>
+                                        <option value="1">Yönetici</option>
+                                        <option value="2">Moderatör</option>
+                                        <option value="3">Üye</option>
+                                    </select>
+                                    <div class="input-group-text"><i class="fas fa-award"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2">Aktif:</label>
+                            <div class="col-lg-6">
+                                <div class="input-group-text"><input v-model="Vactive" type="checkbox" class="form-control"><i class="fas fa-check-circle"></i></div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group row input-group">
+                            <label class="col-form-label col-lg-2 "></label>
+                            <div class="col-lg-6">
+                                <div class="input-group-prepend">
+                                    <input v-on:click="check_userAddForm" type="submit" value="Kaydet" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
-
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Kaydet<i class="icon-paperplane ml-2"></i></button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-        <!-- /form inputs -->
 
     </div>
     <!-- /content area -->
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="form.js"></script>
     <?php require 'views/public/footer.php'; ?>
+</div>
 
 </div>
 <!-- /main content -->
