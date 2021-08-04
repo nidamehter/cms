@@ -1,0 +1,278 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f2659bd2c955a02175c18a4f665dcb14",
+    "packages": [
+        {
+            "name": "firebase/php-jwt",
+            "version": "v5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8 <=9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "time": "2020-03-25T18:49:23+00:00"
+        },
+        {
+            "name": "iyzico/iyzipay-php",
+            "version": "v2.0.48",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iyzico/iyzipay-php.git",
+                "reference": "4eaa6fe37d739055fd5bee1a6d59b3f47be07c41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iyzico/iyzipay-php/zipball/4eaa6fe37d739055fd5bee1a6d59b3f47be07c41",
+                "reference": "4eaa6fe37d739055fd5bee1a6d59b3f47be07c41",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "iyzico and contributors",
+                    "homepage": "https://github.com/iyzico/iyzipay-php/contributors"
+                }
+            ],
+            "description": "iyzipay api php client",
+            "homepage": "https://www.iyzico.com",
+            "keywords": [
+                "iyzico",
+                "iyzico.com",
+                "iyzipay",
+                "iyzipay api",
+                "iyzipay api php",
+                "iyzipay api php client",
+                "iyzipay php",
+                "payment processing"
+            ],
+            "time": "2020-04-15T15:25:32+00:00"
+        },
+        {
+            "name": "sendgrid/php-http-client",
+            "version": "3.10.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sendgrid/php-http-client.git",
+                "reference": "1c97ab5475b0aa98032ea3f89d7f12453469fc08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/1c97ab5475b0aa98032ea3f89d7f12453469fc08",
+                "reference": "1c97ab5475b0aa98032ea3f89d7f12453469fc08",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SendGrid\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bernier",
+                    "email": "mbernier@twilio.com"
+                },
+                {
+                    "name": "Elmer Thomas",
+                    "email": "ethomas@twilio.com"
+                }
+            ],
+            "description": "HTTP REST client, simplified for PHP",
+            "homepage": "http://github.com/sendgrid/php-http-client",
+            "keywords": [
+                "api",
+                "fluent",
+                "http",
+                "rest",
+                "sendgrid"
+            ],
+            "time": "2020-04-29T19:42:26+00:00"
+        },
+        {
+            "name": "sendgrid/sendgrid",
+            "version": "7.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sendgrid/sendgrid-php.git",
+                "reference": "efdd358557f7b51c339dbca049e46e8855cdb9ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/efdd358557f7b51c339dbca049e46e8855cdb9ca",
+                "reference": "efdd358557f7b51c339dbca049e46e8855cdb9ca",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": ">=5.6",
+                "sendgrid/php-http-client": "~3.10"
+            },
+            "replace": {
+                "sendgrid/sendgrid-php": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.9 || ^6.4.3",
+                "squizlabs/php_codesniffer": "3.*",
+                "swaggest/json-diff": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SendGrid\\Mail\\": "lib/mail/",
+                    "SendGrid\\Contacts\\": "lib/contacts/",
+                    "SendGrid\\Stats\\": "lib/stats/"
+                },
+                "files": [
+                    "lib/BaseInterface.php",
+                    "lib/SendGrid.php",
+                    "lib/TwilioEmail.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This library allows you to quickly and easily send emails through Twilio SendGrid using PHP.",
+            "homepage": "http://github.com/sendgrid/sendgrid-php",
+            "keywords": [
+                "email",
+                "grid",
+                "send",
+                "sendgrid",
+                "twilio sendgrid"
+            ],
+            "time": "2020-04-29T20:22:56+00:00"
+        },
+        {
+            "name": "stefangabos/zebra_image",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stefangabos/Zebra_Image.git",
+                "reference": "f23bafa20be9e930b47c6fd62a52914dd9cc1444"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stefangabos/Zebra_Image/zipball/f23bafa20be9e930b47c6fd62a52914dd9cc1444",
+                "reference": "f23bafa20be9e930b47c6fd62a52914dd9cc1444",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Zebra_Image.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Gabos",
+                    "email": "contact@stefangabos.ro",
+                    "homepage": "https://github.com/stefangabos/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A compact (one-file only), lightweight, image manipulation PHP library",
+            "homepage": "https://github.com/stefangabos/Zebra_Image/",
+            "keywords": [
+                "crop",
+                "filters",
+                "gd",
+                "image",
+                "php",
+                "resize",
+                "thumbnail"
+            ],
+            "time": "2020-06-01T05:47:14+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/mailchimp/src" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/Authentication" />
+      <path value="$PROJECT_DIR$/vendor/sendgrid/sendgrid" />
+      <path value="$PROJECT_DIR$/vendor/sendgrid/php-http-client" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/GraphNodes" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/FileUpload" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/Exceptions" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/Http" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/HttpClients" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/Url" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/PseudoRandomString" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/PersistentData" />
+      <path value="$PROJECT_DIR$/vendor/Facebook/Helpers" />
+      <path value="$PROJECT_DIR$/vendor/iyzico/iyzipay-php" />
+      <path value="$PROJECT_DIR$/vendor/stefangabos/zebra_image" />
+    </include_path>
+  </component>
+</project>
