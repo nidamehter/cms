@@ -3,7 +3,8 @@
     "@ckeditor/ckeditor5-build-classic": "^29.1.0",
     "@ckeditor/ckeditor5-build-decoupled-document": "^29.1.0",
     "@ckeditor/ckeditor5-editor-decoupled": "^29.1.0",
-    "@ckeditor/ckeditor5-vue2": "^1.0.5"
+    "@ckeditor/ckeditor5-vue2": "^1.0.5",
+    "bootstrap": "^5.0.2"
   },
   "name": "public",
   "version": "1.0.0",

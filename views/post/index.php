@@ -45,8 +45,25 @@
 								</div>
 							</div>
 
+							<div class="row">
+								<div class="col-md-8">
+									<label>DosyaEkle</label>
+
+									<div class="App container mt-5">
+
+										<div class="mb-3">
+											<label for="formFile" class="form-label">Resim Yükle:</label>
+											<input class="form-control" type="file" @change="selectImage">
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
 							<br /><br />
 							<!-- /form inputs -->
+
 
 							<div class="row">
 								<div class="col-md-8">
@@ -72,7 +89,9 @@
 	<?php require 'views/public/footer.php'; ?>
 	<script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="node_modules/@ckeditor/ckeditor5-vue2/dist/ckeditor.js"></script>
-	
+	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	</script>
+
 	<script>
 		Vue.use(CKEditor);
 
@@ -80,7 +99,7 @@
 			el: '#post',
 			data: {
 				editor: ClassicEditor,
-				editorData: '<p>Content of the editor.</p>',
+				editorData: '<p>İçerik Giriniz.</p>',
 				editorConfig: {
 					// The configuration of the editor.
 				},
@@ -89,32 +108,53 @@
 					categoryname: "",
 					title: "",
 					message: "",
-					text: ""
-				}
-
+					text: "",
+					uploadImage: ""
+				},
+				image: ""
 			},
 			methods: {
+
+				selectImage(event) {
+					this.image = event.target.files[0];
+					this.post.uploadImage = this.image.name;
+				},
+
 				kaydet: function() {
-					this.post.text = this.editorData
+
+					this.post.text = this.editorData;
+
+					const formImageData = new FormData();
+					formImageData.append('image', this.image, this.image.name);
+
 					let data = {
 						post: vm.post
 					};
-					let url = '/cms/post';
 
-					axios.post(url,
-						data, {
-							headers: {
-								'Content-Type': "application/json"
-							}
-						}).then(function(response) {
+					let url1 = '/cms/postResim';
+					let url2 = '/cms/postVeri';
 
-						console.log(response.data);
+					axios.all([
 
-					}).catch(function(err) {
-						console.log(err);
-					});
+						axios.post(url1,
+							formImageData, {
+								headers: {
+									'Content-Type': 'multipart/form-data'
+								}
+							}),
 
-				},
+						axios.post(url2,
+							data, {
+								headers: {
+									'Content-Type': 'application/json'
+								}
+							})
+
+					]).then(axios.spread((data1, data2) => {
+						console.log('data1', data1, 'data2', data2)
+					}));
+
+				}
 			}
 		});
 	</script>

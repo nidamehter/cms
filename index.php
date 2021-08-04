@@ -16,7 +16,8 @@ Route::run('/kullaniciSubmit', 'user@addUser','POST');
 
 Route::run('/postekle', 'post@index');
 Route::run('/anasayfa', 'blog@index');
-Route::run('/post', 'post@kaydet','POST');
+Route::run('/postResim', 'post@postResimKaydet','POST');
+Route::run('/postVeri', 'post@postVeriKaydet','POST');
 
 Route::run('/guncelle/{url}', 'post@guncelle','GET');
 Route::run('/blogSayfasi', 'blog@index');
