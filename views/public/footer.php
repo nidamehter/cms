@@ -3,7 +3,7 @@
 	<div class="text-center d-lg-none w-100">
 		<button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
 			<i class="icon-unfold mr-2"></i>
-			Footer
+			Hakkımızda
 		</button>
 	</div>
 
@@ -30,5 +30,4 @@
 <script src="https://unpkg.com/vue@2.5.17/dist/vue.js" xmlns:v-on="http://www.w3.org/1999/xhtml"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	
-<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+

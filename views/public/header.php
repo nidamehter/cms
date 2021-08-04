@@ -31,8 +31,9 @@
 
 	<script src="assets/js/app.js"></script>
 	<script src="global_assets/js/demo_pages/datatables_basic.js"></script>
+
+	
 	<!-- /theme JS files -->
-	<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>

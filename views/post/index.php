@@ -1,6 +1,5 @@
 <?php require 'views/public/header.php'; ?>
 
-
 <div class="content">
 	<div>
 		<!-- Summernote editor -->
@@ -51,12 +50,16 @@
 
 							<div class="row">
 								<div class="col-md-8">
-									<div id="editor">This is some sample content.</div>
+									<!-- <div id="editor">This is some sample content.</div> -->
+
+									<div>
+										<ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+									</div>
+
 									<br>
 									<button v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save</button>
 								</div>
 							</div>
-
 
 						</div>
 					</div>
@@ -67,20 +70,20 @@
 
 
 	<?php require 'views/public/footer.php'; ?>
+	<script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+	<script src="node_modules/@ckeditor/ckeditor5-vue2/dist/ckeditor.js"></script>
+
 	<script>
-		ClassicEditor
-			.create(document.querySelector('#editor'))
-			.then(editor => {
-				console.log(editor);
-			})
-			.catch(error => {
-				console.error(error);
-			});
-	</script>
-	<script>
-		var vm = new Vue({
+		Vue.use(CKEditor);
+
+		const vm = new Vue({
 			el: '#post',
 			data: {
+				editor: ClassicEditor,
+				editorData: '<p>Content of the editor.</p>',
+				editorConfig: {
+					// The configuration of the editor.
+				},
 				post: {
 					author: "",
 					categoryname: "",
@@ -91,12 +94,13 @@
 
 			},
 			methods: {
-
 				kaydet: function() {
+					this.post.text = this.editorData
 					let data = {
 						post: vm.post
 					};
 					let url = '/cms/post';
+
 					axios.post(url,
 						data, {
 							headers: {
@@ -105,8 +109,6 @@
 						}).then(function(response) {
 
 						console.log(response.data);
-
-
 
 					}).catch(function(err) {
 						console.log(err);
