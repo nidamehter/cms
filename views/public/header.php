@@ -19,7 +19,7 @@
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
-	<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1zObPI606U-zhZaH0k6MOR5r4JYdGCOJ5Tif7FuU1d48F_VsFo8qDp8zr4cQZr8yBeRECLTJ4a0TmuorTjdlW3FxRp2Hag2go3IXJDdIEMKlQMNvy1nN-UscOzYX8DVztDM7V1WHefZVmosk0c3ZPdwAmQdXqXwS1I2PpJhlKbc" charset="UTF-8"></script>
+	<!-- <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=1zObPI606U-zhZaH0k6MOR5r4JYdGCOJ5Tif7FuU1d48F_VsFo8qDp8zr4cQZr8yBeRECLTJ4a0TmuorTjdlW3FxRp2Hag2go3IXJDdIEMKlQMNvy1nN-UscOzYX8DVztDM7V1WHefZVmosk0c3ZPdwAmQdXqXwS1I2PpJhlKbc" charset="UTF-8"></script>  -->
 	<script src="global_assets/js/main/jquery.min.js"></script>
 	<script src="global_assets/js/main/bootstrap.bundle.min.js"></script>
 	<script src="global_assets/js/plugins/loaders/blockui.min.js"></script>
