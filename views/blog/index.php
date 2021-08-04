@@ -69,7 +69,7 @@
                         <h3 class="post-subtitle">
                             <?= $value['message'] ?>
                         </h3>
-
+                        <p> <?= $value['text'] ?> </p>
                     </a>
                     <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
                 </div>
@@ -89,6 +89,7 @@
 
     <hr>
     <?php require 'footer.php'; ?>
-</body>
 
+    
+</body>
 </html>
