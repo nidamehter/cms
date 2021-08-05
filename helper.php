@@ -1,32 +1,30 @@
 <?php
 
+define("PATH",realpath('.'));
 
-function session($name)
-{
+function session($name) {
     if (isset($_SESSION[$name])) {
         return $_SESSION[$name];
     }
 }
-function sPost($name){
-    if(isset($_POST[$name])){
-        if(is_array($_POST[$name])){
-            return array_map(function($item){
+function sPost($name) {
+    if (isset($_POST[$name])) {
+        if (is_array($_POST[$name])) {
+            return array_map(function ($item) {
                 return htmlspecialchars(trim($item));
-            },$_POST[$name]);
-        return htmlspecialchars(trim($_POST[$name]));
+            }, $_POST[$name]);
+            return htmlspecialchars(trim($_POST[$name]));
         }
     }
 }
 
-function post($name)
-{
+function post($name) {
     if (isset($_POST[$name])) {
         return htmlspecialchars(trim($_POST[$name]));
     }
 }
 
-function slugit($str, $replace = array(), $delimiter = '-')
-{
+function slugit($str, $replace = array(), $delimiter = '-') {
     if (!empty($replace)) {
         $str = str_replace((array)$replace, ' ', $str);
     }
@@ -37,8 +35,7 @@ function slugit($str, $replace = array(), $delimiter = '-')
     return $clean;
 }
 
-function UpdateQueryGenerator($table, $model, $id)
-{
+function UpdateQueryGenerator($table, $model, $id) {
     $keys = array();
     $values = array();
 
@@ -59,8 +56,7 @@ function UpdateQueryGenerator($table, $model, $id)
     return $query;
 }
 
-function InsertQueryGenerator($table, $model)
-{
+function InsertQueryGenerator($table, $model) {
     $keys = array();
     $values = array();
 
@@ -90,8 +86,7 @@ function InsertQueryGenerator($table, $model)
     return $query;
 }
 
-function GenerateRandomCode()
-{
+function GenerateRandomCode() {
     $n = 11;
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
@@ -101,3 +96,4 @@ function GenerateRandomCode()
     }
     return $randomString;
 }
+

@@ -1,9 +1,7 @@
 <?php
 
-class Model extends Database
-{
-    public function get($querystring = "")
-    {
+class Model extends Database {
+    public function get($querystring = "") {
         try {
             //İstekten kendi sorgusu ile gelmezse belirtilen tablodan tüm veriler gelecek, belirtilmiş ise kendi yazdığı sorguya göre veri getirilecek.
             $query = $querystring;
@@ -27,8 +25,7 @@ class Model extends Database
         }
     }
 
-    public function Insert($query)
-    {
+    public function Insert($query) {
         try {
             //InsertQueryGeneretor helperFunctions'tan gelen fonksiyon.
             $result = $this->connection()->prepare($query);
@@ -63,8 +60,7 @@ class Model extends Database
         }
     }
 
-    public function Update($query)
-    {
+    public function Update($query) {
 
         try {
             //UpdateQueryGeneretor helperFunctions'tan gelen fonksiyon.
@@ -95,8 +91,7 @@ class Model extends Database
         }
     }
 
-    public function Delete($query)
-    {
+    public function Delete($query) {
         try {
             $result = $this->connection()->prepare($query);
             $result->execute();
@@ -129,35 +124,33 @@ class Model extends Database
 
 
 
-    function InsertQueryGenerator($table, $model)
-{
-    $keys = array();
-    $values = array();
+    function InsertQueryGenerator($table, $model) {
+        $keys = array();
+        $values = array();
 
-    foreach (json_decode($model) as $key => $value) {
-        array_push($keys, $key);
-        array_push($values, $value);
-    }
-
-    $query = 'INSERT INTO ' . $table . ' (';
-    for ($i = 0; $i < count($keys); $i++) {
-        if ($i < count($keys) - 1) {
-            $query .= $keys[$i] . ",";
-        } else {
-            $query .= $keys[$i];
+        foreach (json_decode($model) as $key => $value) {
+            array_push($keys, $key);
+            array_push($values, $value);
         }
-    }
-    $query .= ') VALUES (';
-    for ($i = 0; $i < count($values); $i++) {
-        if ($i < count($values) - 1) {
-            $query .= "'$values[$i]'" . ",";
-        } else {
-            $query .= "'$values[$i]'";
+
+        $query = 'INSERT INTO ' . $table . ' (';
+        for ($i = 0; $i < count($keys); $i++) {
+            if ($i < count($keys) - 1) {
+                $query .= $keys[$i] . ",";
+            } else {
+                $query .= $keys[$i];
+            }
         }
+        $query .= ') VALUES (';
+        for ($i = 0; $i < count($values); $i++) {
+            if ($i < count($values) - 1) {
+                $query .= "'$values[$i]'" . ",";
+            } else {
+                $query .= "'$values[$i]'";
+            }
+        }
+
+        $query .= ');';
+        return $query;
     }
-
-    $query .= ');';
-    return $query;
-}
-
 }

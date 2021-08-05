@@ -57,29 +57,34 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-            <?php foreach($blogData as $key => $value): ?>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
+                <?php foreach ($blogData as $key => $value) : ?>
+                    <hr>
+                    <div class="post-preview">
+                        <a href="post.html">
 
-                        <h2 class="post-title">
-                            <?= $value['title'] ?>
-                        </h2>
+                            <h2 class="post-title">
+                                <?= $value['title'] ?>
+                            </h2>
 
-                        <h3 class="post-subtitle">
-                            <?= $value['message'] ?>
-                        </h3>
-                        <p> <?= $value['text'] ?> </p>
-                    </a>
-                    <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
-                </div>
-                <hr>
-            <?php endforeach; ?>
+                            <h3 class="post-subtitle">
+                                <?= $value['message'] ?>
+                            </h3>
+                            <p> <?= $value['text'] ?> </p>
+                            <div>
+                                <?php if ($value['uploadedImageName']) : ?>
+                                    <img src="upload/<?= $value['uploadedImageName'] ?>" >
+                                <? endif; ?>
+                            </div>
+                        </a>
+                        <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
+                    </div>
+                    <hr>
+                <?php endforeach; ?>
 
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a >Eski Gönderiler &rarr;</a>
+                        <a>Eski Gönderiler &rarr;</a>
                     </li>
                 </ul>
             </div>
@@ -90,6 +95,6 @@
     <hr>
     <?php require 'footer.php'; ?>
 
-    
+
 </body>
 </html>

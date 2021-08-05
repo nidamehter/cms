@@ -7,13 +7,12 @@ class  post extends Controller {
     }
 
     public function postResimKaydet() {
-
         if (isset($_FILES["image"])) {
             $error  = false;
             $image  = $_FILES["image"];
             $code   = (int)$image["error"];
             $valid  = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-            $folder = dirname(__FILE__) . "/upload/";
+            $folder = PATH . "/views/blog/upload/";
             $target = $folder . $image["name"];
 
             if (!file_exists($folder)) {
@@ -43,7 +42,6 @@ class  post extends Controller {
                     case UPLOAD_ERR_EXTENSION:
                         $error  = 'Error ' . $code . ': Dosya yüklenirken PHP uzantısı durdu';
                         break;
-
                     default:
                         $error  = 'Error ' . $code . ': Bilinmeyen yükleme hatası';
                         break;
@@ -80,7 +78,8 @@ class  post extends Controller {
             'title' => $data['post']['title'],
             'message' => $data['post']['message'],
             'text' => $data['post']['text'],
-            'created' => date('Y-m-d H:i:s', time())
+            'created' => date('Y-m-d H:i:s', time()),
+            'uploadedImageName' => $data['post']['uploadImage']
         );
 
 
