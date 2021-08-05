@@ -1,6 +1,8 @@
 <?php
 
-define("PATH",realpath('.'));
+define("PATH", realpath('.'));
+
+//define("URL", $_SERVER['']);
 
 function session($name) {
     if (isset($_SESSION[$name])) {
@@ -13,7 +15,7 @@ function sPost($name) {
             return array_map(function($item){
                 return htmlspecialchars(trim($item));
             }, $_POST[$name]);
-            
+
         return htmlspecialchars(trim($_POST[$name]));
         }
     }

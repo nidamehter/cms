@@ -2,23 +2,38 @@
 
 class settings extends Controller {
 
-    public function index(){
-/*
-        if(isset($_POST['submit'])){
-            $html = '<?php'.PHP_EOL.PHP_EOL;
+    public function index() {
 
-            if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
+            $html = '<?php' . PHP_EOL . PHP_EOL;
 
-                foreach (sPost('setting') as $key => $value){
-                    $html .= '$setting["'.$key.'"] = "'.$value.'";'.PHP_EOL;
+            if (isset($_POST['submit'])) {
+
+                foreach (sPost('setting') as $key => $value) {
+                    $html .= '$setting["' . $key . '"] = "' . $value . '";' . PHP_EOL;
                 }
-                file_put_contents(PATH ."/views/public/siteSettings.php", $html);
-                header("Location: /");
-
+                file_put_contents(PATH . "/views/public/siteSettings.php", $html);
             }
-        }*/
-        
-        echo $_POST['submit'];
+        }
+
+        if (isset($_POST['submit'])) {
+            print_r($_POST['submit']);
+        }
         $this->view("ayarlar/index");
+    }
+
+    public function save() {
+        if (isset($_POST['submit'])) {
+            $html = '<?php' . PHP_EOL . PHP_EOL;
+
+            if (isset($_POST['submit'])) {
+
+                foreach (sPost('setting') as $key => $value) {
+                    $html .= '$setting["' . $key . '"] = "' . $value . '";' . PHP_EOL;
+                }
+                file_put_contents(PATH . "/views/public/siteSettings.php", $html);
+                header("Location: /cms/Ayar");
+            }
+        }
     }
 }
