@@ -3,19 +3,22 @@
 class settings extends Controller {
 
     public function index(){
-/*        $html = '<?php'.PHP_EOL.PHP_EOL;
-
+/*
         if(isset($_POST['submit'])){
-            foreach (sPost('settings') as $key => $value){
-                $html .= '$settings["'.$key.'"] = "'.$value.'";'.PHP_EOL;
+            $html = '<?php'.PHP_EOL.PHP_EOL;
+
+            if(isset($_POST['submit'])){
+
+                foreach (sPost('setting') as $key => $value){
+                    $html .= '$setting["'.$key.'"] = "'.$value.'";'.PHP_EOL;
+                }
+                file_put_contents(PATH ."/views/public/siteSettings.php", $html);
+                header("Location: /");
+
             }
-            file_put_contents("siteSettings.php", $html);
-        }
-*/  
-        if(isset($POST['submit'])){
-            print_r($POST);
-        }
+        }*/
         
+        echo $_POST['submit'];
         $this->view("ayarlar/index");
     }
 }

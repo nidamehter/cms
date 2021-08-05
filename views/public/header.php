@@ -436,40 +436,6 @@
 
 						<?php endforeach; ?>
 
-<!--
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Kullanıcı Ekle</span></a>
-							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-								<li class="nav-item"><a href="index.html" class="nav-link active">Yönetici Ekle</a></li>
-								<li class="nav-item"><a href="index.html" class="nav-link active">Kullanıcı Ekle</a></li>
-							</ul>
-						</li>
-
-
-												
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Kategoriler</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Themes">
-								<li class="nav-item"><a href="index.html" class="nav-link active">Kategori Ekle</a></li>
-								<li class="nav-item"><a href="index.html" class="nav-link active">Kategori Düzenle</a></li>
-
-							</ul>
-						</li>
-						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Post</span></a>
-
-							<ul class="nav nav-group-sub" data-submenu-title="Themes">
-								<li class="nav-item"><a href="/cms/postekle" class="nav-link active">Post Ekle</a></li>
-								<li class="nav-item"><a href="/cms/postekle" class="nav-link">Post Düzenle</a></li>
-
-							</ul>
-						</li>
-
-
-
--->
-
 						<!-- /main -->
 					</ul>
 				</div>

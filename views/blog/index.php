@@ -58,10 +58,8 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                 <?php foreach ($blogData as $key => $value) : ?>
-                    <hr>
                     <div class="post-preview">
                         <a href="post.html">
-
                             <h2 class="post-title">
                                 <?= $value['title'] ?>
                             </h2>
@@ -94,7 +92,6 @@
 
     <hr>
     <?php require 'footer.php'; ?>
-
 
 </body>
 </html>
