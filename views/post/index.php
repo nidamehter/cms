@@ -43,7 +43,7 @@
 										<input type="text" v-model="post.message" class="form-control">
 									</div>
 								</div>
-							</div>
+							</div> 
 
 							<div class="row">
 								<div class="col-md-8">
