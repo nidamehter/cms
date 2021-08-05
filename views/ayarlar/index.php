@@ -1,6 +1,5 @@
 <?php require 'views/public/header.php'; ?>
 
-
 <div class="content-wrapper">
 <div class="content">
 
@@ -20,11 +19,18 @@
                 <form action="/cms/AyarKaydet" method="post">
                     <div class="form-group">
                         <label>Site Adı:</label>
-                        <input type="text" class="form-control" placeholder="Site Adı" name="setting[title]" value="<?= $setting["title"] ?>">
+                        <input type="text" class="form-control" placeholder="Site Adı" name="setting[title]" value="<?= settings("title") ?>">
                     </div>
                     <div class="form-group">
                         <label>Footer:</label>
-                        <input type="text" class="form-control" placeholder="Açıklama" name="setting[footer]" value="<?= $setting["footer"] ?>">
+                        <input type="text" class="form-control" placeholder="Açıklama" name="setting[footer]" value="<?= settings("footer") ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Bakım Modu:</label>
+                        <select name="setting[bakim]">
+                            <option value="1" <?= settings('bakim')==1 ? 'selected' : null ?> >Açık</option>
+                            <option value="2"  <?= settings('bakim')==2 ? 'selected' : null ?> >Kapalı</option>
+                        </select>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">

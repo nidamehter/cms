@@ -2,7 +2,12 @@
 
 define("PATH", realpath('.'));
 
-//define("URL", $_SERVER['']);
+require "siteSettings.php";
+
+function settings($name){
+    global $setting;
+    return(isset($setting[$name]) ? $setting[$name]: false);
+}
 
 function session($name) {
     if (isset($_SESSION[$name])) {

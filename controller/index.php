@@ -2,37 +2,11 @@
 
 class index extends Controller{
 
-public function home() {
+    public function home() {
 
-$this->view('public/index');
+        $this->view('public/index');
 
-
-
-
-}
-
-
-
-
-
+    }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

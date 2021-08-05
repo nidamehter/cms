@@ -1,10 +1,8 @@
 <?php
 
-class Route
-{
+class Route {
 
-    public static function parse_url()
-    {
+    public static function parse_url() {
         $dirname = dirname($_SERVER['SCRIPT_NAME']);
 
         $dirname = $dirname != '/' ? $dirname : null;
@@ -12,11 +10,9 @@ class Route
 
         $request_uri = str_replace([$dirname, $basename], null, $_SERVER['REQUEST_URI']);
         return $request_uri;
-
     }
 
-    public static function run($url, $callback, $method = 'get')
-    {
+    public static function run($url, $callback, $method = 'get') {
         $method = explode('|', strtoupper($method));
 
         if (in_array($_SERVER['REQUEST_METHOD'], $method)) {
@@ -45,15 +41,9 @@ class Route
 
                         require $controllerFile;
                         call_user_func_array([new $className, $controller[1]], $parameters);
-
                     }
-
                 }
-
             }
-
         }
-
     }
-
 }
