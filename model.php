@@ -13,7 +13,9 @@ class Model extends Database {
                 "message" => "Get function called.",
                 "date" => date("d/m/Y")
             ];
+
             return $this->result;
+            
         } catch (PDOException $exception) {
             $this->result = [
                 "success" => false,

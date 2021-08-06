@@ -8,6 +8,9 @@ require __DIR__ . '/model.php';
 require __DIR__ . '/helper.php';
 
 
+Route::run('/admin/giris','giris@index');
+Route::run('/admin/giris','giris@login', 'POST');
+
 Route::run('/admin', 'index@home');
 
 Route::run('/admin/kullaniciekle', 'user@index');
