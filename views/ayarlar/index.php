@@ -14,9 +14,9 @@
                     </div>
                 </div>
             </div>
-
+    <!-- /cms/admin/Ayar -->
             <div class="card-body">
-                <form action="/cms/AyarKaydet" method="post">
+                <form action="" method="post">
                     <div class="form-group">
                         <label>Site Adı:</label>
                         <input type="text" class="form-control" placeholder="Site Adı" name="setting[title]" value="<?= settings("title") ?>">

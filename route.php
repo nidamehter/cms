@@ -1,5 +1,4 @@
 <?php
-
 class Route {
 
     public static function parse_url() {
@@ -45,5 +44,6 @@ class Route {
                 }
             }
         }
+        
     }
 }

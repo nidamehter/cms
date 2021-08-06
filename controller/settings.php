@@ -3,11 +3,6 @@
 class settings extends Controller {
 
     public function index() {
-
-        $this->view("ayarlar/index");
-    }
-
-    public function save() {
         if (isset($_POST['submit'])) {
             $html = '<?php' . PHP_EOL . PHP_EOL;
 
@@ -17,8 +12,9 @@ class settings extends Controller {
                     $html .= '$setting["' . $key . '"] = "' . $value . '";' . PHP_EOL;
                 }
                 file_put_contents(PATH . "/siteSettings.php", $html);
-                header("Location: /cms/Ayar");
+                header("Location: /cms/admin/Ayar");
             }
         }
+        $this->view("ayarlar/index");
     }
 }

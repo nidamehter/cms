@@ -6,31 +6,31 @@ $menuler = [
         "name" => "Kullanıcı Ekle",
         "icon" => "icon-copy",
         "subMenu" => [
-            "kullaniciekle" => "Yönetici Ekle",
-            "author" => "Kullanıcı Ekle"
+            "admin/kullaniciekle" => "Yönetici Ekle",
+            "admin/author" => "Kullanıcı Ekle"
         ]
     ],
     "kategori" => [
         "name" => "Kategoriler",
         "icon" => "icon-color-sampler",
         "subMenu" => [
-            "kategori" => "Kategori Ekle",
-            "kategoriDuzenle" => "Kategori Düzenle"
+            "admin/kategori" => "Kategori Ekle",
+            "admin/kategoriDuzenle" => "Kategori Düzenle"
         ]
     ],
     "post" => [
         "name" => "Post",
         "icon" => "icon-puzzle",
         "subMenu" => [
-            "postekle" => "Post Ekle",
-            "postduzenle" => "Post Düzenle"
+            "admin/postekle" => "Post Ekle",
+            "admin/postduzenle" => "Post Düzenle"
         ]
     ],
     "ayarlar" => [
         "name" => "Ayarlar",
         "icon" => "icon-cogs",
         "subMenu"=> [
-            "Ayar" => "CMS Ayarları"
+            "admin/Ayar" => "CMS Ayarları"
             
         ]
     ],

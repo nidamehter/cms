@@ -1,12 +1,17 @@
 <?php
+require "siteSettings.php";
 
 define("PATH", realpath('.'));
 
-require "siteSettings.php";
+function getLastPath($number = 0) {
+    $lastPath = explode("/", $_SERVER['REQUEST_URI']);
+    $index = count($lastPath) - $number;
+    return $lastPath[$index];
+}
 
-function settings($name){
+function settings($name) {
     global $setting;
-    return(isset($setting[$name]) ? $setting[$name]: false);
+    return (isset($setting[$name]) ? $setting[$name] : false);
 }
 
 function session($name) {
@@ -14,14 +19,15 @@ function session($name) {
         return $_SESSION[$name];
     }
 }
+
 function sPost($name) {
     if (isset($_POST[$name])) {
         if (is_array($_POST[$name])) {
-            return array_map(function($item){
+            return array_map(function ($item) {
                 return htmlspecialchars(trim($item));
             }, $_POST[$name]);
 
-        return htmlspecialchars(trim($_POST[$name]));
+            return htmlspecialchars(trim($_POST[$name]));
         }
     }
 }
@@ -104,4 +110,3 @@ function GenerateRandomCode() {
     }
     return $randomString;
 }
-
