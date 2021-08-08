@@ -1,13 +1,12 @@
-
 <?php
 
-class giris extends Controller {
+class login extends Controller {
 
     public function index() {
         $this->view('login/index');
     }
 
-    public function login() {
+    public function loginSubmit() {
         $methodresult = [];
         $postdata = file_get_contents("php://input");
         $data = json_decode($postdata, true);
@@ -18,7 +17,6 @@ class giris extends Controller {
                 'email' => $data['mail'],
                 'passwords' => $data['pass'],
             );
-
         } else {
             $methodresult = [
                 'success' => false,
@@ -29,8 +27,7 @@ class giris extends Controller {
             exit;
         }
 
-        
-        $login = $this->model("userCek");
+        $login = $this->model("users");
         $methodresult = $login->login($data);
 
         echo json_encode($methodresult);

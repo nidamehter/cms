@@ -59,7 +59,7 @@
 						mail: this.Vmail,
 						pass: this.Vpass,
 					}
-					let url = '/cms/admin/giris';
+					let url = '/cms/admin/login';
 					await axios.post(url, login, {
 						headers: { //application/x-www-form-urlencoded
 							'Content-Type': "application/json"

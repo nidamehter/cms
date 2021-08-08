@@ -1,18 +1,41 @@
 <?php
 
-class post extends Controller {
-
+class category extends Controller {
     public function index() {
-        $this->view('post/index');
+        $this->view('category/categoryAdd');
     }
 
-    public function postResimKaydet() {
+    public function list() {
+        $categoryModel = $this->model("categories");
+        $res = $categoryModel->getall();
+        $this->view('category/categoryList', ["categories" => $res["result"]]);
+    }
+
+    public function add() {
+        $postdata = file_get_contents("php://input");
+        $reqdata = json_decode($postdata, true);
+
+        $data = array(
+            'name' => $reqdata['categoryName'],
+            'caturl' => $reqdata['categoryUrl'],
+            'description' => $reqdata['categoryDescription'],
+            'active' => $reqdata['categoryActive'],
+            'image' => $reqdata['categoryImageName']
+        );
+
+        $catModel = $this->model("categories");
+        $res =  $catModel->kayit("category", $data);
+        echo json_encode($res);
+    }
+
+
+    public function addImage() {
         if (isset($_FILES["image"])) {
             $error  = false;
             $image  = $_FILES["image"];
             $code   = (int)$image["error"];
             $valid  = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-            $folder = PATH . "/views/blog/upload/";
+            $folder = PATH . "/views/blog/upload/category/";
             $target = $folder . $image["name"];
 
             if (!file_exists($folder)) {
@@ -68,23 +91,17 @@ class post extends Controller {
         }
     }
 
-    function postVeriKaydet() {
-        $postdata = file_get_contents("php://input");
-        $data = json_decode($postdata, true);
+    public function edit() {
+        $catmodel = $this->model("categories");
+        $categories = $catmodel->getall();
+        $this->view('category/categoryEdit', [
+            'kategoriler' => $categories
+        ]);
+    }
 
-        $data = array(
-            'author' => $data['post']['author'],
-            'categoryname' => $data['post']['categoryname'],
-            'title' => $data['post']['title'],
-            'message' => $data['post']['message'],
-            'text' => $data['post']['text'],
-            'created' => date('Y-m-d H:i:s', time()),
-            'uploadedImageName' => $data['post']['uploadImage']
-        );
-
-
-        $postModel = $this->model("posts");
-        $model =   $postModel->kayit("posts", $data);
-        echo json_encode($model);
+    function delete($id) {
+        $userModel = $this->model("categories");
+        $results = $userModel->deleteCategory($id);
+        header("Location: /cms/admin/categoryList");
     }
 }

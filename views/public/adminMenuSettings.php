@@ -6,16 +6,18 @@ $menuler = [
         "name" => "Kullanıcı Ekle",
         "icon" => "icon-copy",
         "subMenu" => [
-            "admin/kullaniciekle" => "Yönetici Ekle",
-            "admin/author" => "Kullanıcı Ekle"
+            "admin/userList" => "Kullanıcılar",
+            "admin/userAdd" => "Kullanıcı Ekle",
+            "admin/userEdit" => "Kullanıcı Düzenle"
         ]
     ],
     "kategori" => [
         "name" => "Kategoriler",
         "icon" => "icon-color-sampler",
         "subMenu" => [
-            "admin/kategori" => "Kategori Ekle",
-            "admin/kategoriDuzenle" => "Kategori Düzenle"
+            "admin/categoryList" => "Kategoriler",
+            "admin/categoryAdd" => "Kategori Ekle",
+            "admin/categoryEdit" => "Kategori Düzenle"
         ]
     ],
     "post" => [

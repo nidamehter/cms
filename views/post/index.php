@@ -57,7 +57,6 @@
 										</div>
 									</div>
 								</div>
-
 							</div>
 
 							<br /><br />
@@ -85,6 +84,7 @@
 
 
 	<?php require 'views/public/footer.php'; ?>
+
 	<script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="node_modules/@ckeditor/ckeditor5-vue2/dist/ckeditor.js"></script>
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css">

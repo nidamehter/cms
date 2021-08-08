@@ -1,7 +1,6 @@
 <?php require 'views/public/header.php'; ?>
 
 
-
 <div class="content-wrapper">
 
     <!-- Page header -->
@@ -26,7 +25,7 @@
     <div class="content">
         <!-- Form inputs -->
 
-        <div id="form" class="card" style=" margin-right: 10%">
+        <div id="userAddForm" class="card" style=" margin-right: 10%">
             <div class="card-header header-elements-inline">
                 <h4 class="card-title"><i class="fas fa-address-card"></i> KULLANICI EKLE </h4>
 
@@ -115,8 +114,10 @@
 
     </div>
     <!-- /content area -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="form.js"></script>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
+    <script src="userForm.js"></script>
     <?php require 'views/public/footer.php'; ?>
 </div>
 
