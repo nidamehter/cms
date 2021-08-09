@@ -95,9 +95,9 @@
                                         </h3>
                                         <p> <?= $value['text'] ?> </p>
                                         <div>
-                                            <?php if ($value['uploadedImageName']) : ?>
+                                            <?php if (isset($value['uploadedImageName'])): ?>
                                                 <img src="upload/<?= $value['uploadedImageName'] ?>">
-                                            <? endif; ?>
+                                            <?php endif; ?>
                                         </div>
                                     </a>
                                     <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
