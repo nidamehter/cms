@@ -33,6 +33,7 @@ Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');         //Yok
 
 Route::run('/admin/Ayar', 'settings@index');
 Route::run('/admin/Ayar', 'settings@index', "POST");
+Route::run('/test', 'settings@test');
 
 //Bakım Modu Aktifse Anasayfaya girmemesi için /admin yolu olmayan diğer sayfaları engelle
 if (settings('bakim') == 1 && getLastPath(1) != "admin") {
@@ -42,3 +43,4 @@ if (settings('bakim') == 1 && getLastPath(1) != "admin") {
 
 //Public
 Route::run('/anasayfa', 'blog@index');
+Route::run('/anasayfa/{url}', 'blog@blogGetCategoryPost', 'GET');

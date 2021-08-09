@@ -3,7 +3,12 @@
 class post extends Controller {
 
     public function index() {
-        $this->view('post/index');
+        $postmodel = $this->model("posts");
+        $category = $postmodel->category();
+
+        $this->view('post/index', [
+            "categories" => $category["result"]
+        ]);
     }
 
     public function postResimKaydet() {
@@ -24,24 +29,7 @@ class post extends Controller {
                     case UPLOAD_ERR_INI_SIZE:
                         $error  = 'Error ' . $code . ': Dosya boyutu php.ini deki belirtilen değerleri aşıyor: <a href="http://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize" target="_blank" rel="nofollow"><span class="function-string">upload_max_filesize</span></a>';
                         break;
-                    case UPLOAD_ERR_FORM_SIZE:
-                        $error  = 'Error ' . $code . ': Yüklenen dosya, HTML formunda belirtilen <span class="const-string">MAX_FILE_SIZE</span> yönergesini aşıyor';
-                        break;
-                    case UPLOAD_ERR_PARTIAL:
-                        $error  = 'Error ' . $code . ': Dosyanın yalnızca bir kısmı yüklendi';
-                        break;
-                    case UPLOAD_ERR_NO_FILE:
-                        $error  = 'Error ' . $code . ': Dosya Yok';
-                        break;
-                    case UPLOAD_ERR_NO_TMP_DIR:
-                        $error  = 'Error ' . $code . ': Geçici dizin  yok';
-                        break;
-                    case UPLOAD_ERR_CANT_WRITE:
-                        $error  = 'Error ' . $code . ': Diske Yazma Hatası';
-                        break;
-                    case UPLOAD_ERR_EXTENSION:
-                        $error  = 'Error ' . $code . ': Dosya yüklenirken PHP uzantısı durdu';
-                        break;
+
                     default:
                         $error  = 'Error ' . $code . ': Bilinmeyen yükleme hatası';
                         break;
@@ -74,7 +62,7 @@ class post extends Controller {
 
         $data = array(
             'author' => $data['post']['author'],
-            'categoryname' => $data['post']['categoryname'],
+            'categoryid' => $data['post']['categoryid'],
             'title' => $data['post']['title'],
             'message' => $data['post']['message'],
             'text' => $data['post']['text'],

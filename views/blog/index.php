@@ -1,24 +1,6 @@
 <?php require 'header.php'; ?>
 
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-
-    <div class="container">
-        <div class="row">
-            <nav class="col-sm-3" id="myScrollspy">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#section1">Section 1</a></li>
-                    <li><a href="#section2">Section 2</a></li>
-                    <li><a href="#section3">Section 3</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Kategori</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+<body id="blog">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -68,35 +50,71 @@
                     </div>
                 </div>
             </div>
+
+            <div id="sidebar-wrapper">
+                <nav id="spy">
+                    <ul class="sidebar-nav nav">
+                        <li class="sidebar-brand">
+                            <a href="#home"><span class="fa fa-home solo">Home</span></a>
+                        </li>
+
+                        <li>
+                            <a href="#anch1" data-scroll></a>
+                        </li>
+
+                        <?php foreach ($blogCategoryData as $key => $value) : ?>
+                            <li>
+                                <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['id'] ?>">
+                                    <span class="fa fa-pencil"></span> <?= $value['name'] ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
+            </div>
         </div>
+
     </header>
+
+
 
     <!-- Main Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                <?php foreach ($blogData as $key => $value) : ?>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                <?= $value['title'] ?>
-                            </h2>
+                <?php if (isset($blogData)) : ?>
+                    <!-- Main Content -->
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                            <h3 class="post-subtitle">
-                                <?= $value['message'] ?>
-                            </h3>
-                            <p> <?= $value['text'] ?> </p>
-                            <div>
-                                <?php if ($value['uploadedImageName']) : ?>
-                                    <img src="upload/<?= $value['uploadedImageName'] ?>">
-                                <? endif; ?>
-                            </div>
-                        </a>
-                        <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
+                            <?php foreach ($blogData as $key => $value) : ?>
+                                <div class="post-preview">
+                                    <a href="post.html">
+                                        <h2 class="post-title">
+                                            <?= $value['title'] ?>
+                                        </h2>
+
+                                        <h3 class="post-subtitle">
+                                            <?= $value['message'] ?>
+                                        </h3>
+                                        <p> <?= $value['text'] ?> </p>
+                                        <div>
+                                            <?php if ($value['uploadedImageName']) : ?>
+                                                <img src="upload/<?= $value['uploadedImageName'] ?>">
+                                            <? endif; ?>
+                                        </div>
+                                    </a>
+                                    <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
+                                </div>
+                                <hr>
+                            <?php endforeach; ?>
+
+                        </div>
                     </div>
-                    <hr>
-                <?php endforeach; ?>
+                <?php endif; ?>
+                <hr />
+
 
                 <!-- Pager -->
                 <ul class="pager">
@@ -111,11 +129,35 @@
 
     <hr>
     <?php require 'footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
+    <script>
+        //VUE3
+        const blogApp = Vue.createApp({
+            data() {
+                return {
+                    id: 1
+                }
+            },
+            methods: {
+                async getPosts(event) {
+                    this.id = event.target.getAttribute('data-id');
+
+                    let submitData = {
+                        id: this.id,
+                    }
+                    window.location = "/cms/anasayfa/" + this.id;
+                }
+            },
+            //Properties
+            computed: {}
+        });
+
+        //Mount
+        const userApp = blogApp.mount('#blog')
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-    <script>
-        $("#sticky_item").stick_in_parent();
-    </script>
 </body>
 
 </html>

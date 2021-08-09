@@ -17,4 +17,9 @@ class settings extends Controller {
         }
         $this->view("ayarlar/index");
     }
+
+    function test(){
+        $this->view("ayarlar/test");
+
+    }
 }

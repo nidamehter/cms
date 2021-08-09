@@ -25,8 +25,13 @@
 									</div>
 
 									<label>Kategori</label>
-									<div class="form-group">
-										<input type="text" v-model="post.categoryname" class="form-control">
+									<div >
+										<select v-model="post.categoryid">
+											<option disabled value="">Please select one</option>
+											<?php foreach ($categories as $category => $value) : ?>
+												<option value=<?= $value["id"] ?>> <?= $value["name"] ?></option>
+											<?php endforeach; ?>
+										</select>
 									</div>
 
 								</div>
@@ -82,7 +87,6 @@
 		</div>
 	</div>
 
-
 	<?php require 'views/public/footer.php'; ?>
 
 	<script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
@@ -103,7 +107,7 @@
 				},
 				post: {
 					author: "",
-					categoryname: "",
+					categoryid: "",
 					title: "",
 					message: "",
 					text: "",
@@ -129,8 +133,8 @@
 						post: vm.post
 					};
 
-					let url1 = '/cms/postResim';
-					let url2 = '/cms/postVeri';
+					let url1 = '/cms/admin/postResim';
+					let url2 = '/cms/admin/postVeri';
 
 					axios.all([
 

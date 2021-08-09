@@ -35,7 +35,6 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js" xmlns:v-on="http://www.w3.org/1999/xhtml"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- jQuery -->
