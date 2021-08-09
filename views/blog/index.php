@@ -57,11 +57,6 @@
                         <li class="sidebar-brand">
                             <a href="#home"><span class="fa fa-home solo">Home</span></a>
                         </li>
-
-                        <li>
-                            <a href="#anch1" data-scroll></a>
-                        </li>
-
                         <?php foreach ($blogCategoryData as $key => $value) : ?>
                             <li>
                                 <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['id'] ?>">
