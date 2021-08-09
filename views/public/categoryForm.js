@@ -1,3 +1,4 @@
+//VUE-3
 const categoryFormApp = Vue.createApp({
     data() {
         return {
@@ -12,7 +13,6 @@ const categoryFormApp = Vue.createApp({
         }
     },
     methods: {
-
         selectImage(event) {
             this.image = event.target.files[0];
             this.post.uploadImage = this.image.name;

@@ -29,4 +29,33 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            position: relative;
+        }
+
+        ul.nav-pills {
+            top: 20px;
+            position: fixed;
+        }
+
+        div.col-sm-9 div {
+            height: 250px;
+            font-size: 28px;
+        }
+
+        #section {
+            color: #fff;
+            background-color: #1E88E5;
+        }
+
+        @media screen and (max-width: 810px) {
+            #section1,
+            #section2,
+            #section3
+        }
+    </style>
 </head>

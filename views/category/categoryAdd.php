@@ -112,9 +112,8 @@
     <?php require 'views/public/footer.php'; ?>
 
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
     <!-- VUE 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
     <script src="categoryForm.js"></script>
 
 </div>

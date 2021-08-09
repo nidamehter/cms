@@ -1,15 +1,9 @@
 <?php
 
-class products extends Model
-{
-    public function getall()
-    {
+class products extends Model {
+    public function getall() {
         $sql = "select * from products";
-        $product= parent::get($sql);
+        $product = parent::get($sql);
         return $product;
     }
-
-
 }
-
-?>

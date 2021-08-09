@@ -1,6 +1,25 @@
 <?php require 'header.php'; ?>
 
-<body>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+    <div class="container">
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#section1">Section 1</a></li>
+                    <li><a href="#section2">Section 2</a></li>
+                    <li><a href="#section3">Section 3</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Kategori</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -70,7 +89,7 @@
                             <p> <?= $value['text'] ?> </p>
                             <div>
                                 <?php if ($value['uploadedImageName']) : ?>
-                                    <img src="upload/<?= $value['uploadedImageName'] ?>" >
+                                    <img src="upload/<?= $value['uploadedImageName'] ?>">
                                 <? endif; ?>
                             </div>
                         </a>
@@ -92,6 +111,11 @@
 
     <hr>
     <?php require 'footer.php'; ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+    <script>
+        $("#sticky_item").stick_in_parent();
+    </script>
 </body>
+
 </html>
