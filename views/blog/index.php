@@ -1,6 +1,10 @@
 <?php require 'header.php'; ?>
 
+<<<<<<< Updated upstream
 <body id="blog">
+=======
+<body>
+>>>>>>> Stashed changes
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -78,6 +82,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
+<<<<<<< Updated upstream
                 <?php if (isset($blogData)) : ?>
                     <!-- Main Content -->
                     <div class="row">
@@ -109,6 +114,8 @@
                     </div>
                 <?php endif; ?>
                 <hr />
+=======
+>>>>>>> Stashed changes
 
 
                 <!-- Pager -->
@@ -125,6 +132,7 @@
     <hr>
     <?php require 'footer.php'; ?>
 
+<<<<<<< Updated upstream
     <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
     <script>
         //VUE3
@@ -153,6 +161,8 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+=======
+>>>>>>> Stashed changes
 </body>
 
 </html>
