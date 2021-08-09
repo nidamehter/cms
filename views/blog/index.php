@@ -1,10 +1,6 @@
 <?php require 'header.php'; ?>
 
-<<<<<<< Updated upstream
 <body id="blog">
-=======
-<body>
->>>>>>> Stashed changes
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
