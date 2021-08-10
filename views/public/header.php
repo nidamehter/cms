@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title><?= settings("title")?></title>
+	<title><?= settings("title") ?></title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -35,7 +35,14 @@
 	<script src="global_assets/js/demo_pages/datatables_basic.js"></script>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Uploader Scripts - Yeni-->
+	<script src="global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+	<script src="global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+	<script src="global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+	<script src="global_assets/js/demo_pages/uploader_bootstrap.js"></script>
 	<!-- /theme JS files -->
+
 </head>
 
 <body>

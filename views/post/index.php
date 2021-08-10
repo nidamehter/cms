@@ -1,5 +1,7 @@
 <?php require 'views/public/header.php'; ?>
 
+
+
 <div class="content">
 	<div>
 		<!-- Summernote editor -->
@@ -16,31 +18,27 @@
 						<div id="post" class="card-body">
 
 							<div class="row">
-
 								<div class="col-md-4">
-
 									<label>Yazar</label>
 									<div class="form-group">
-										<input type="text" v-model="post.author" class="form-control">
+										<input placeholder="Ör: CodeTalker" type="text" v-model="post.author" class="form-control">
 									</div>
 
 									<label>Kategori</label>
-									<div >
-										<select v-model="post.categoryid">
-											<option disabled value="">Please select one</option>
+									<div>
+										<select class="form-control" id="exampleFormControlSelect1" v-model="post.categoryid">
+											<option disabled value="">Lütfen Bir Kategori Seçiniz</option>
 											<?php foreach ($categories as $category => $value) : ?>
 												<option value=<?= $value["id"] ?>> <?= $value["name"] ?></option>
 											<?php endforeach; ?>
 										</select>
 									</div>
-
 								</div>
 
 								<div class="col-md-4">
-
 									<label>Başlık</label>
 									<div class="form-group">
-										<input type="text" v-model="post.title" class="form-control">
+										<input placeholder="Ör: Yazılım" type="text" v-model="post.title" class="form-control">
 									</div>
 
 									<label>Konu</label>
@@ -50,17 +48,12 @@
 								</div>
 							</div>
 
+							<br />
 							<div class="row">
 								<div class="col-md-8">
-									<label>DosyaEkle</label>
-
-									<div class="App container mt-5">
-
-										<div class="mb-3">
-											<label for="formFile" class="form-label">Resim Yükle:</label>
-											<input class="form-control" type="file" @change="selectImage">
-										</div>
-									</div>
+									<label for="formFile" class="form-label">Resim Yükle:</label>
+									<input id="input-modifier" class="form-control" type="file" @change="selectImage" data-fouc>
+									<span class="form-text text-muted"></span>
 								</div>
 							</div>
 
@@ -76,7 +69,7 @@
 									</div>
 
 									<br>
-									<button v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save</button>
+									<button v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save </button>
 								</div>
 							</div>
 
@@ -92,7 +85,6 @@
 	<script src="node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="node_modules/@ckeditor/ckeditor5-vue2/dist/ckeditor.js"></script>
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-	</script>
 
 	<script>
 		Vue.use(CKEditor);
@@ -119,6 +111,7 @@
 
 				selectImage(event) {
 					this.image = event.target.files[0];
+					console.log(event);
 					this.post.uploadImage = this.image.name;
 				},
 
@@ -158,6 +151,19 @@
 
 				}
 			}
+		});
+
+
+		$(document).ready(function() {
+
+			$("#input-modifier").fileinput({
+				browseClass: "btn btn-primary btn-block",
+				showCaption: false,
+				showRemove: false,
+				showUpload: false,
+				autoOrientImage:false
+			});
+
 		});
 	</script>
 

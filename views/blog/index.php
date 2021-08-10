@@ -60,7 +60,7 @@
                         <?php foreach ($blogCategoryData as $key => $value) : ?>
                             <li>
                                 <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
-                                    <span class="fa fa-pencil"></span> <?= $value['name'] ?>
+                                    <span class="fa fa-pencil" style="color:black"><?= $value['name'] ?></span> 
                                 </a>
                             </li>
                         <?php endforeach; ?>
