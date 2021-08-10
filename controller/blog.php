@@ -5,18 +5,17 @@ class blog extends Controller {
         $blogModel = $this->model("blogs");
         $blogCategoryData = $blogModel->getAllCategory();
 
-
         $this->view("blog/index", [
             "blogCategoryData" => $blogCategoryData['result']
         ]);
     }
 
-    public function blogGetCategoryPost($id) {
+    public function blogGetCategoryPost($url) {
 
         $blogModel = $this->model("blogs");
         $blogCategoryData = $blogModel->getAllCategory();
 
-        $blogData = $blogModel->getCategoryPost($id);
+        $blogData = $blogModel->getCategoryPost($url);
 
         $this->view("blog/index", [
             "blogData" => $blogData['result'],

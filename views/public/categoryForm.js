@@ -4,7 +4,7 @@ const categoryFormApp = Vue.createApp({
         return {
             post: {
                 VcategoryName: null,
-                VcategoryUrl: null,
+                VcategoryUrl: "",
                 VcategoryDescription: null,
                 VcategoryActive: null,
                 uploadImage: ""

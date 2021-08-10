@@ -15,6 +15,14 @@ class category extends Controller {
         $postdata = file_get_contents("php://input");
         $reqdata = json_decode($postdata, true);
 
+        //Eğer SEO-url girilmemişse, kategorinin adını SEO-url e çevir, aynı zamanda categoryUrl( SEO-url ) farklı bir formatta girilmişse onu da slugit ile SEO-url e çevir.
+        if("" == $reqdata['categoryUrl']){
+            $reqdata['categoryUrl'] = slugit($reqdata['categoryName']);
+        }else{
+            $reqdata['categoryUrl'] = slugit($reqdata['categoryUrl']);
+        }
+
+
         $data = array(
             'name' => $reqdata['categoryName'],
             'caturl' => $reqdata['categoryUrl'],

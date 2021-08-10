@@ -59,7 +59,7 @@
                         </li>
                         <?php foreach ($blogCategoryData as $key => $value) : ?>
                             <li>
-                                <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['id'] ?>">
+                                <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
                                     <span class="fa fa-pencil"></span> <?= $value['name'] ?>
                                 </a>
                             </li>
@@ -70,8 +70,6 @@
         </div>
 
     </header>
-
-
 
     <!-- Main Content -->
     <div class="container">
@@ -95,7 +93,7 @@
                                         </h3>
                                         <p> <?= $value['text'] ?> </p>
                                         <div>
-                                            <?php if (isset($value['uploadedImageName'])): ?>
+                                            <?php if (isset($value['uploadedImageName'])) : ?>
                                                 <img src="upload/<?= $value['uploadedImageName'] ?>">
                                             <?php endif; ?>
                                         </div>

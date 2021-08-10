@@ -47,7 +47,7 @@
                             <label class="col-form-label col-lg-2">Kategori Adı:</label>
                             <div class="col-lg-6">
                                 <div class="input-group-prepend">
-                                    <input type="text" class="form-control h-100" v-model="post.VcategoryName">
+                                    <input type="text" class="form-control h-100" v-model="post.VcategoryName" placeholder="Ör: Yazılım">
                                     <div class="input-group-text"><i class="fas fa-align-left"></i></div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                             <label class="col-form-label col-lg-2">Kategori URL:</label>
                             <div class="col-lg-6">
                                 <div class="input-group-prepend">
-                                    <input type="text" v-model="post.VcategoryUrl" class="form-control h-100" placeholder="" autocomplete="off">
+                                    <input type="text" v-model="post.VcategoryUrl" class="form-control h-100" placeholder="İsteğe Bağlı. (Girilmezse Kategori İsmini Referans Alır.)" autocomplete="off">
                                     <div class="input-group-text"><i class="fas fa-anchor"></i></div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                             <label class="col-form-label col-lg-2">Kategori Açıklaması:</label>
                             <div class="col-lg-6">
                                 <div class="input-group-prepend">
-                                    <input type="text" v-model="post.VcategoryDescription" class="form-control h-100" placeholder="" autocomplete="off">
+                                    <input type="text" v-model="post.VcategoryDescription" class="form-control h-100" placeholder="Ör: Yeni Bir İşlemci Mimarisi" autocomplete="off">
                                     <div class="input-group-text"><i class="fab fa-adn"></i></div>
                                 </div>
                             </div>

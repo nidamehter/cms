@@ -7,8 +7,9 @@ class blogs extends Model {
         return $categories;
     }
 
-    public function getCategoryPost($id) {
-        $sql = "select * from posts where categoryid=".$id;
+    public function getCategoryPost($url) {
+        //Kategorinin SEO-url i hangi postun, kategori id sine denk geliyorsa onu getir.
+        $sql = "SELECT * FROM posts,category WHERE category.caturl = '".$url."' and posts.categoryid = category.id";
         $posts = parent::get($sql);
         return $posts;
     }

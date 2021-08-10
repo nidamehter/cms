@@ -42,10 +42,10 @@ function slugit($str, $replace = array(), $delimiter = '-') {
     if (!empty($replace)) {
         $str = str_replace((array)$replace, ' ', $str);
     }
-    $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
-    $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '-', "$clean");
-    $clean = strtolower(trim($clean, '-'));
-    $clean = preg_replace("/[\/_|+ -]+/", $delimiter, "$clean");
+    $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str); //Ascii karakterlere çeviri yapar.
+    $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '-', "$clean"); //Belirtilen karakterler harici(A-Z a-z 0-9 / _ | + (space) -) çeşitli noktalama işaretlerini "-" ile değiştirir.
+    $clean = strtolower(trim($clean, '-')); //Değerin başında ve sonunda "-" işareti varsa trimler.
+    $clean = preg_replace("/[\/_|+ -]+/", $delimiter, "$clean");//Eğer belirtilen karakterlerin de istenilen bir karakter ile değiştirilmesini istiyorsak bunu kullanırız, şuan default olarak "-" ile değişiyor.
     return $clean;
 }
 
@@ -100,8 +100,7 @@ function InsertQueryGenerator($table, $model) {
     return $query;
 }
 
-function GenerateRandomCode() {
-    $n = 11;
+function GenerateRandomCode($n = 11) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
     for ($i = 0; $i < $n; $i++) {
