@@ -27,32 +27,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-    
+    <link rel="stylesheet" href="sidebar/sidebar.css">
     <style>
         body {
             position: relative;
         }
-
-        ul.nav-pills {
-            top: 20px;
-            position: fixed;
-        }
-
-        div.col-sm-9 div {
-            height: 250px;
-            font-size: 28px;
-        }
-
-        #section {
-            color: #fff;
-            background-color: #1E88E5;
-        }
-
-        /*
-        @media screen and (max-width: 810px) {
-            #section1,
-        }
-        */
     </style>
-    <link rel="stylesheet" href="sidebar/sidebar.css">
 </head>

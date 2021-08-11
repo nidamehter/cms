@@ -49,13 +49,23 @@
 							</div>
 
 							<br />
+							<!-- 
 							<div class="row">
 								<div class="col-md-8">
 									<label for="formFile" class="form-label">Resim Yükle:</label>
-									<input id="input-modifier" class="form-control" type="file" @change="selectImage" data-fouc>
+									<input ref="myDiv" id="input-modifier" class="form-control" type="file" @change="selectImage" data-fouc>
 									<span class="form-text text-muted"></span>
 								</div>
 							</div>
+							-->
+
+							<div class="form-group row">
+								<div class="col-lg-8" v-cloak @drop.prevent="selectImageDrag" @dragover.prevent>
+									<input type="file" class="file-input" data-fouc @change="selectImage">
+									<span class="form-text text-muted"></span>
+								</div>
+							</div>
+
 
 							<br /><br />
 							<!-- /form inputs -->
@@ -107,16 +117,24 @@
 				},
 				image: ""
 			},
+
 			methods: {
 
 				selectImage(event) {
+					console.log(event.target.files[0]);
+
 					this.image = event.target.files[0];
-					console.log(event);
+					this.post.uploadImage = this.image.name;
+				},
+
+				selectImageDrag(event) {
+					console.log(event.dataTransfer.files[0]);
+
+					this.image = event.dataTransfer.files[0];
 					this.post.uploadImage = this.image.name;
 				},
 
 				kaydet: function() {
-
 					this.post.text = this.editorData;
 
 					const formImageData = new FormData();
@@ -150,20 +168,22 @@
 					}));
 
 				}
+			},
+			created() {
+
+
 			}
 		});
 
-
-		$(document).ready(function() {
-
+		// Shorthand for $( document ).ready()
+		$(function() {
 			$("#input-modifier").fileinput({
 				browseClass: "btn btn-primary btn-block",
 				showCaption: false,
 				showRemove: false,
 				showUpload: false,
-				autoOrientImage:false
+				autoOrientImage: false
 			});
-
 		});
 	</script>
 

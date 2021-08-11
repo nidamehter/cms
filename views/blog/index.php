@@ -1,6 +1,6 @@
 <?php require 'header.php'; ?>
 
-<body id="blog">
+<body id="blog"z>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
