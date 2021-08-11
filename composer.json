@@ -1,15 +1,7 @@
 {
-    "name": "sevket",
-    "authors": [
-        {
-            "name": "sevketkaplan",
-            "email": "sevketkaplan.20@gmail.com"
-        }
-    ],
     "require": {
-        "sendgrid/sendgrid": "^7.5",
-        "firebase/php-jwt": "^5.2",
-        "iyzico/iyzipay-php": "^2.0",
+        "phpmailer/phpmailer": "^6.5",
+        "kreait/firebase-php": "^5.22",
         "stefangabos/zebra_image": "^2.6"
     }
 }
