@@ -45,7 +45,7 @@ function slugit($str, $replace = array(), $delimiter = '-') {
     $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str); //Ascii karakterlere çeviri yapar.
     $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '-', "$clean"); //Belirtilen karakterler harici(A-Z a-z 0-9 / _ | + (space) -) çeşitli noktalama işaretlerini "-" ile değiştirir.
     $clean = strtolower(trim($clean, '-')); //Değerin başında ve sonunda "-" işareti varsa trimler.
-    $clean = preg_replace("/[\/_|+ -]+/", $delimiter, "$clean");//Eğer belirtilen karakterlerin de istenilen bir karakter ile değiştirilmesini istiyorsak bunu kullanırız, şuan default olarak "-" ile değişiyor.
+    $clean = preg_replace("/[\/_|+ -]+/", $delimiter, "$clean"); //Eğer belirtilen karakterlerin de istenilen bir karakter ile değiştirilmesini istiyorsak bunu kullanırız, şuan default olarak "-" ile değişiyor.
     return $clean;
 }
 
@@ -110,10 +110,69 @@ function GenerateRandomCode($n = 11) {
     return $randomString;
 }
 
-function image($image){
+
+/**
+ * Açıklama: Görüntü işleme fonksiyondur.
+ * 
+ * Gereksinimler: php.ini içindeki "extension=gd", "extension=mbstring" yi önündeki ";" ü kaldırarak etkinleştiriniz.
+ * 
+ * Kullanım: imageTransform($src = "/desktop/image1.jpg", $dest = "/desktop/image2.jpg", [640, 480, false, 0, 100]);
+ * 
+ * @param string $src Kaynak Dosya
+ * @param string $dest Hedef Dosya
+ * @param array $dim [Width, Height, AspectRatio(True|False), Rotate, Quality]
+ * @author "Codetalker&Blitzkrieg"
+ * */
+function imageTransform($src, $dest, $dim) {
+
+    $imager = new Zebra_Image();
+    $imager->auto_handle_exif_orientation = true;  //$width, $height"extension=mbstring"
+    $imager->source_path = $src;
+    $imager->target_path = $dest;
 
 
+    $imager->enlarge_smaller_images = true; //False olarak ayarlanırsa, gerekli genişlik ve yükseklikten daha küçük; hem genişliğe hem de yüksekliğe sahip resimlere dokunulmaz.
+    $imager->preserve_time = true;
+    $imager->handle_exif_orientation_tag = true;
 
+    $imager->jpeg_quality = $dim[4];
+    $imager->preserve_aspect_ratio = $dim[2]; //Görüntünün bozulmaması için görüntüyü kırparak boyutlandırır. Resmin bir kısmı kaybolur.
 
+    $imager->rotate($dim[3]);
 
+    if (!$imager->resize($dim[0], $dim[1], ZEBRA_IMAGE_CROP_CENTER)) {
+
+        switch ($imager->error) {
+
+            case 1:
+                echo 'Kaynak dosyası bulunamadı!';
+                break;
+            case 2:
+                echo 'Kaynak dosyası okunabilir değil!';
+                break;
+            case 3:
+                echo 'Hedef dosyaya yazılamıyor!';
+                break;
+            case 4:
+                echo 'Desteklenmeyen formatta kaynak dosya!';
+                break;
+            case 5:
+                echo 'Desteklenmeyen formatta hedef dosya!';
+                break;
+            case 6:
+                echo 'GD kitaplığı sürümü, hedef dosya biçimini desteklemiyor!';
+                break;
+            case 7:
+                echo 'GD kütüphanesi yüklü değil!';
+                break;
+            case 8:
+                echo '"chmod" komutu ayarlardan dolayı devre dışı!';
+                break;
+            case 9:
+                echo '"exif_read_data" fonksiyonu mevcut değil';
+                break;
+        }
+    } else {
+        echo 'Success!';
+    }
 }

@@ -8,7 +8,6 @@ require __DIR__ . '/model.php';
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/helper.php';
 
-
 Route::run('/admin', 'index@home');
 
 Route::run('/admin/login', 'login@index');
@@ -18,7 +17,7 @@ Route::run('/admin/userAdd', 'user@index');
 Route::run('/admin/userAdd', 'user@add', 'POST');
 
 Route::run('/admin/userList', 'user@userList');
-Route::run('/admin/userEdit/{url}', 'user@edit', 'POST');         //Yok
+Route::run('/admin/userEdit/{url}', 'user@edit', 'POST');       //Yok
 Route::run('/admin/userDelete/{url}', 'user@delete', 'GET');
 
 Route::run('/admin/postekle', 'post@index');
@@ -30,7 +29,7 @@ Route::run('/admin/categoryAdd', 'category@index');
 Route::run('/admin/categoryAdd', 'category@add', 'POST');
 Route::run('/admin/categoryAddImage', 'category@addImage', 'POST');
 Route::run('/admin/categoryDelete/{url}', 'category@delete', 'GET');
-Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');         //Yok
+Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');        //Yok
 
 Route::run('/admin/Ayar', 'settings@index');
 Route::run('/admin/Ayar', 'settings@index', "POST");
