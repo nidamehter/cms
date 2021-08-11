@@ -109,3 +109,11 @@ function GenerateRandomCode($n = 11) {
     }
     return $randomString;
 }
+
+function image($image){
+
+
+
+
+
+}

@@ -1,7 +1,7 @@
 <?php require 'header.php'; ?>
 
-<body id="blog"z>
-
+<body>
+<div id="blog">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -60,7 +60,7 @@
                         <?php foreach ($blogCategoryData as $key => $value) : ?>
                             <li>
                                 <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
-                                    <span class="fa fa-pencil" style="color:black"><?= $value['name'] ?></span> 
+                                    <span class="fa fa-pencil" style="color:black"><?= $value['name'] ?></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -108,7 +108,7 @@
                 <?php endif; ?>
                 <hr />
 
-
+             
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
@@ -118,13 +118,15 @@
             </div>
         </div>
     </div>
-
+</div>
 
     <hr>
     <?php require 'footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
-    <script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script >
         //VUE3
         const blogApp = Vue.createApp({
             data() {
@@ -149,7 +151,6 @@
         //Mount
         const userApp = blogApp.mount('#blog')
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 </body>
 
