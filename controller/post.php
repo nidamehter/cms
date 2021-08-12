@@ -11,7 +11,31 @@ class post extends Controller {
         ]);
     }
 
-    public function postResimKaydet() {
+    function kaydet() {
+
+        /* Sadece RAW json data alabiliyor.
+        $postdata = file_get_contents("php://input");
+        $data = json_decode($postdata, true);
+        */
+        $data = json_decode($_POST['data'], true);
+
+        $saveData = array(
+            'author' => $data['author'],
+            'categoryid' => $data['categoryid'],
+            'title' => $data['title'],
+            'message' => $data['message'],
+            'text' => $data['text'],
+            'created' => date('Y-m-d H:i:s', time()),
+            'uploadedImageName' => $data['uploadImage']
+        );
+
+        $postModel = $this->model("posts");
+        $model =   $postModel->kayit("posts", $saveData);
+
+        if ($model['result'] < 1) {
+            echo json_encode(array('success' => 3, "message" => "Hiçbir post/resim kaydedilemedi."));
+            exit;
+        }
 
         if (isset($_FILES["image"])) {
             $error  = false;
@@ -54,31 +78,12 @@ class post extends Controller {
             if (empty($error)) {
 
                 if ($iminfo[0] > 800 && $iminfo[1] > 600) {
-                    imageTransform($target, $target, [900, 600, false, 0, 100]); 
+                    imageTransform($target, $target, [900, 600, false, 0, 100]);
                 }
-                echo json_encode(array("error" => 0, "message" => "Yükleme başarılı"));
+                echo json_encode(array("success" => 1, "message" => "Yükleme başarılı"));
             } else {
-                echo json_encode(array("error" => 1, "message" => $error));
+                echo json_encode(array("success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => $error));
             }
         }
-    }
-
-    function postVeriKaydet() {
-        $postdata = file_get_contents("php://input");
-        $data = json_decode($postdata, true);
-
-        $saveData = array(
-            'author' => $data['post']['author'],
-            'categoryid' => $data['post']['categoryid'],
-            'title' => $data['post']['title'],
-            'message' => $data['post']['message'],
-            'text' => $data['post']['text'],
-            'created' => date('Y-m-d H:i:s', time()),
-            'uploadedImageName' => $data['post']['uploadImage']
-        );
-
-        $postModel = $this->model("posts");
-        $model =   $postModel->kayit("posts", $saveData);
-        echo json_encode($model);
     }
 }

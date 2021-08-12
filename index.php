@@ -22,8 +22,7 @@ Route::run('/admin/userEdit/{url}', 'user@edit', 'POST');       //Yok
 Route::run('/admin/userDelete/{url}', 'user@delete', 'GET');
 
 Route::run('/admin/postekle', 'post@index');
-Route::run('/admin/postVeri', 'post@postVeriKaydet', 'POST');
-Route::run('/admin/postResim', 'post@postResimKaydet', 'POST');
+Route::run('/admin/postekle', 'post@kaydet', 'POST');
 
 Route::run('/admin/categoryList', 'category@list');
 Route::run('/admin/categoryAdd', 'category@index');

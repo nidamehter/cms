@@ -127,46 +127,53 @@
 				},
 
 				kaydet: function() {
-					this.post.text = this.editorData;
+					if (this.image == "" && this.post.title == "") {
+						Swal.fire('Lütfen En Az Resim ve Başlık Bilgisi Ekleyiniz!', 'Eksiklik Var!', 'warning');
 
-					const formImageData = new FormData();
-					formImageData.append('image', this.image, this.image.name);
+					} else {
+						this.post.text = this.editorData;
 
-					let data = {
-						post: vm.post
-					};
-					console.log(data)
-					let url1 = '/cms/admin/postResim';
-					let url2 = '/cms/admin/postVeri';
+						const formImageData = new FormData();
+						formImageData.append('image', this.image, this.image.name);
+						formImageData.append('data', JSON.stringify(this.post));
 
-					axios.all([
+						let url = '/cms/admin/postekle';
+						axios.all([
 
-						axios.post(url1,
-							formImageData, {
-								headers: {
-									'Content-Type': 'multipart/form-data'
-								}
-							}),
+							axios.post(url,
+								formImageData, {
+									headers: {
+										'Content-Type': 'multipart/form-data'
+									}
+								}),
 
-						axios.post(url2,
-							data, {
-								headers: {
-									'Content-Type': 'application/json'
-								}
-							})
+						]).then(axios.spread((result) => {
 
-					]).then(axios.spread((data1, data2) => {
-						console.log('data1', data1, 'data2', data2)
-					}));
+							switch (result.data.success) {
+								case 1:
+									Swal.fire('Post Başarıyla Eklendi!', 'Başarılı!', 'success');
+									break;
+								case 2:
+									Swal.fire('Post Verileri Resimsiz!', 'Resmi Gözden Geçiriniz!', 'warning');
+									break;
+								case 3:
+									Swal.fire('Post Eklenemedi!', 'Tekrar Deneyin!', 'error');
+									break;
+								default:
+							}
 
+							setTimeout(function() {
+								window.location.href = "/cms/admin/postekle"
+							}, 2000);
+
+						}));
+					}
 				}
 			},
-			created() {
-			},
-			mounted() {
-			}
-		});
 
+			created() {},
+			mounted() {}
+		});
 	</script>
 	<!-- /VUE2-POST -->
 
