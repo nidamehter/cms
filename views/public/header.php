@@ -43,6 +43,11 @@
 	<script src="global_assets/js/demo_pages/uploader_bootstrap.js"></script>
 	<!-- /theme JS files -->
 
+	<style>
+		.ck-editor__editable {
+			min-height: 180px;
+		}
+	</style>
 </head>
 
 <body>
