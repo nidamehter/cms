@@ -361,7 +361,6 @@
 	</div>
 	<!-- /main navbar -->
 
-
 	<!-- Page content -->
 	<div class="page-content">
 

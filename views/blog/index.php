@@ -1,6 +1,7 @@
 <?php require 'header.php'; ?>
 
-<body>
+<body data-spy="scroll" data-target=".sidebar">
+    
     <div id="blog">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-custom navbar-fixed-top">

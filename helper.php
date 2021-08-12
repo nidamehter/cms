@@ -124,22 +124,21 @@ function GenerateRandomCode($n = 11) {
  * @author "Codetalker&Blitzkrieg"
  * */
 function imageTransform($src, $dest, $dim) {
-
+    
     $imager = new Zebra_Image();
-    $imager->auto_handle_exif_orientation = true;  //$width, $height"extension=mbstring"
+    
     $imager->source_path = $src;
     $imager->target_path = $dest;
 
-
+    $imager->auto_handle_exif_orientation = true;  //$width, $height"extension=mbstring"
     $imager->enlarge_smaller_images = true; //False olarak ayarlanırsa, gerekli genişlik ve yükseklikten daha küçük; hem genişliğe hem de yüksekliğe sahip resimlere dokunulmaz.
     $imager->preserve_time = true;
     $imager->handle_exif_orientation_tag = true;
 
-    $imager->jpeg_quality = $dim[4];
     $imager->preserve_aspect_ratio = $dim[2]; //Görüntünün bozulmaması için görüntüyü kırparak boyutlandırır. Resmin bir kısmı kaybolur.
-
     $imager->rotate($dim[3]);
-
+    $imager->jpeg_quality = $dim[4];
+   
     if (!$imager->resize($dim[0], $dim[1], ZEBRA_IMAGE_CROP_CENTER)) {
 
         switch ($imager->error) {
