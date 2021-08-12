@@ -59,8 +59,8 @@
                                 <a href="#home"><span class="fa fa-home solo">Home</span></a>
                             </li>
                             <?php foreach ($blogCategoryData as $key => $value) : ?>
-                                <li>
-                                    <a data-scroll v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
+                                <li class="<?= $value['caturl']==getLastPath(1) ? 'active' : null ?>" >
+                                    <a data-scroll="" v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
                                         <span class="fa fa-pencil" style="color:black"><?= $value['name'] ?></span>
                                     </a>
                                 </li>
@@ -138,15 +138,9 @@
             methods: {
                 async getPosts(event) {
                     this.id = event.target.getAttribute('data-id');
-
-                    let submitData = {
-                        id: this.id,
-                    }
                     window.location = "/cms/anasayfa/" + this.id;
                 }
-            },
-            //Properties
-            computed: {}
+            }
         });
 
         //Mount
