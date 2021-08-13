@@ -11,7 +11,6 @@ class posts extends Model {
   public function getOneRecord($id = '') {
     $sqlrecord = "select * from posts where id=" . $id;
     $updateproduct = parent::get($sqlrecord);
-
     return $updateproduct;
   }
 

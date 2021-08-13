@@ -171,7 +171,5 @@ function imageTransform($src, $dest, $dim) {
                 echo '"exif_read_data" fonksiyonu mevcut değil';
                 break;
         }
-    } else {
-        echo 'Success!';
     }
 }

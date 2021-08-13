@@ -33,7 +33,7 @@ class post extends Controller {
         $model =   $postModel->kayit("posts", $saveData);
 
         if ($model['result'] < 1) {
-            echo json_encode(array('success' => 3, "message" => "Hiçbir post/resim kaydedilemedi."));
+            echo json_encode(["success" => 3, "message" => "Hiçbir post/resim kaydedilemedi."]);
             exit;
         }
 
@@ -80,9 +80,11 @@ class post extends Controller {
                 if ($iminfo[0] > 800 && $iminfo[1] > 600) {
                     imageTransform($target, $target, [900, 600, false, 0, 100]);
                 }
-                echo json_encode(array("success" => 1, "message" => "Yükleme başarılı"));
+                echo json_encode(["success" => 1, "message" => "Yükleme başarılı"]);
+                exit;
             } else {
-                echo json_encode(array("success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => $error));
+                echo json_encode(["success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => $error]);
+                exit;
             }
         }
     }

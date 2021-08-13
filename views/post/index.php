@@ -85,11 +85,13 @@
 	<script src="node_modules/@ckeditor/ckeditor5-vue2/dist/ckeditor.js"></script>
 	<script nomodule src="node_modules/@ckeditor/ckeditor5-essentials/src/essentials.js"></script>
 	<script src="node_modules/piexifjs/piexif.js"></script>
+	<script nomodule src="node_modules/sweetalert2/src/sweetalert2.js"></script>
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
 
 	<!-- VUE2-POST -->
 	<script>
-		Vue.use(CKEditor);
+		Vue.use(CKEditor, Sweetalert2);
 
 		const vm = new Vue({
 			el: '#post',
@@ -113,20 +115,16 @@
 
 			methods: {
 				selectImage(event) {
-					console.log(event.target.files[0]);
-
 					this.image = event.target.files[0];
 					this.post.uploadImage = this.image.name;
 				},
 
 				selectImageDrag(event) {
-					console.log(event.dataTransfer.files[0]);
-
 					this.image = event.dataTransfer.files[0];
 					this.post.uploadImage = this.image.name;
 				},
 
-				kaydet: function() {
+				async kaydet() {
 					if (this.image == "" && this.post.title == "") {
 						Swal.fire('Lütfen En Az Resim ve Başlık Bilgisi Ekleyiniz!', 'Eksiklik Var!', 'warning');
 
@@ -138,17 +136,16 @@
 						formImageData.append('data', JSON.stringify(this.post));
 
 						let url = '/cms/admin/postekle';
-						axios.all([
 
-							axios.post(url,
-								formImageData, {
-									headers: {
-										'Content-Type': 'multipart/form-data'
-									}
-								}),
 
-						]).then(axios.spread((result) => {
+						await axios.post(url,
+							formImageData, {
+								headers: {
+									'Content-Type': 'multipart/form-data'
+								}
+							}).then((result) => {
 
+							console.log(result);
 							switch (result.data.success) {
 								case 1:
 									Swal.fire('Post Başarıyla Eklendi!', 'Başarılı!', 'success');
@@ -159,14 +156,18 @@
 								case 3:
 									Swal.fire('Post Eklenemedi!', 'Tekrar Deneyin!', 'error');
 									break;
-								default:
 							}
+							/*
+														setTimeout(function() {
+															window.location.href = "/cms/admin/postekle"
+														}, 2000);
+							*/
+						}).catch(e => {
 
-							setTimeout(function() {
-								window.location.href = "/cms/admin/postekle"
-							}, 2000);
+							console.log(e);
 
-						}));
+						});
+
 					}
 				}
 			},

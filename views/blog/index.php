@@ -1,7 +1,9 @@
 <?php require "header.php"; ?>
 
 <body>
-    <div>
+
+
+    <div class="container-fluid">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -20,6 +22,7 @@
                 </div>
             </div>
         </nav>
+
 
         <div class="page-content" id="blog">
 
@@ -44,6 +47,15 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+
+
+                        <div class="col-5">
+                            <div class="sidebar-item">
+                                <div class="make-me-sticky">
+                                    <h3>Item 1</h3>
+                                </div>
+                            </div>
+                        </div>
 
                         <div id="sidebar-wrapper">
 
@@ -81,7 +93,8 @@
                         </div>
 
                         <!-- Post preview-->
-                        <div class="post-preview">
+                        <div class="post-preview ">
+
                             <?php if (isset($blogData)) : ?>
                                 <?php foreach ($blogData as $key => $value) : ?>
                                     <div class="post-preview">
@@ -119,40 +132,20 @@
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.1.5/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script>
-        //VUE3
-        const blogApp = Vue.createApp({
-            data() {
-                return {
-                    id: 1
-                }
-            },
-            methods: {
-                async getPosts(event) {
-                    this.id = event.target.getAttribute('data-id');
-                    window.location = "/cms/anasayfa/" + this.id;
-                }
-            }
-        });
-
-        //Mount
-        const userApp = blogApp.mount('#blog')
-    </script>
+    <script src="blogCategories.js"></script>
 
     <!-- scripts -->
     <script src="js/particles/particles.js"></script>
     <script src="js/particles/app.js"></script>
-
-    <!-- stats.js -->
     <script src="js/particles/lib/stats.js"></script>
-
     <script src="js/space/index.js"></script>
 
-</body>
 
+</body>
 </html>
