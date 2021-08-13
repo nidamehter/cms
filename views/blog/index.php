@@ -22,6 +22,7 @@
         </nav>
 
         <div class="page-content" id="blog">
+
             <!-- Page Header-->
             <!-- Resim boyutları 1900 X 1300 -->
             <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
@@ -59,7 +60,7 @@
                                         <div class="offcanvas-body offcanvasRenk">
                                             <div class="overflow-auto">
                                                 <ul>
-                                                    
+
                                                     <?php foreach ($blogCategoryData as $key => $value) : ?>
 
                                                         <div class="list-group <?= $value['caturl'] == getLastPath(1) ? 'active' : null ?>">
@@ -69,6 +70,7 @@
                                                         </div>
 
                                                     <?php endforeach; ?>
+
                                                     <canvas class="space"></canvas>
                                                 </ul>
                                             </div>
@@ -80,29 +82,30 @@
 
                         <!-- Post preview-->
                         <div class="post-preview">
+                            <?php if (isset($blogData)) : ?>
+                                <?php foreach ($blogData as $key => $value) : ?>
+                                    <div class="post-preview">
+                                        <a href="post.html">
+                                            <h2 class="post-title">
+                                                <?= $value['title'] ?>
+                                            </h2>
 
-                            <?php foreach ($blogData as $key => $value) : ?>
-                                <div class="post-preview">
-                                    <a href="post.html">
-                                        <h2 class="post-title">
-                                            <?= $value['title'] ?>
-                                        </h2>
+                                            <h3 class="post-subtitle">
+                                                <?= $value['message'] ?>
+                                            </h3>
+                                            <p> <?= $value['text'] ?> </p>
+                                            <div>
+                                                <?php if (isset($value['uploadedImageName'])) : ?>
+                                                    <img src="upload/<?= $value['uploadedImageName'] ?>">
+                                                <?php endif; ?>
+                                            </div>
+                                        </a>
+                                        <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
+                                    </div>
 
-                                        <h3 class="post-subtitle">
-                                            <?= $value['message'] ?>
-                                        </h3>
-                                        <p> <?= $value['text'] ?> </p>
-                                        <div>
-                                            <?php if (isset($value['uploadedImageName'])) : ?>
-                                                <img src="upload/<?= $value['uploadedImageName'] ?>">
-                                            <?php endif; ?>
-                                        </div>
-                                    </a>
-                                    <p class="post-meta">Gönderen: <?= $value['author'] ?> - <a href="#"></a> Tarih: <?= $value['created'] ?> </p>
-                                </div>
-
-                                <hr class="my-4" />
-                            <?php endforeach; ?>
+                                    <hr class="my-4" />
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
                         <!-- Pager-->
                         <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Eski Gönderiler →</a></div>

@@ -20,16 +20,32 @@
     <link href="styles.css" rel="stylesheet" media="screen" />
 
     <!-- Extensions -->
-    <link rel="stylesheet" media="screen" href="js/particles/style.css"/>
+    <link rel="stylesheet" media="screen" href="js/particles/style.css" />
     <link rel="stylesheet" href="js/space/style.css">
     <style>
         body {
             position: relative;
         }
 
-        .offcanvasRenk{
+        .offcanvasRenk {
             background-image: url("assets/img/home-bg.jpg");
         }
+
+        .make-me-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+
+            padding: 0 15px;
+        }
+
+        .sidebar-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
-   
+
 </head>
