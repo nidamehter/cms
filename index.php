@@ -27,11 +27,11 @@ Route::run('/admin/userDelete/{url}', 'user@delete', 'GET');
 Route::run('/admin/postList', 'post@postList');
 Route::run('/admin/postekle', 'post@index');
 Route::run('/admin/postekle', 'post@kaydet', 'POST');
+Route::run('/admin/postDelete/{url}', 'post@delete', 'GET');
 
 Route::run('/admin/categoryList', 'category@list');
 Route::run('/admin/categoryAdd', 'category@index');
 Route::run('/admin/categoryAdd', 'category@add', 'POST');
-Route::run('/admin/categoryAddImage', 'category@addImage', 'POST');
 Route::run('/admin/categoryDelete/{url}', 'category@delete', 'GET');
 Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');        //Yok
 

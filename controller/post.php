@@ -11,6 +11,7 @@ class post extends Controller {
         ]);
     }
 
+
     function postList() {
 
         $postmodel = $this->model("posts");
@@ -97,5 +98,11 @@ class post extends Controller {
                 exit;
             }
         }
+    }
+
+    function delete($id) {
+        $userModel = $this->model("posts");
+        $results = $userModel->deletePost($id);
+        header("Location: /cms/admin/postList");
     }
 }

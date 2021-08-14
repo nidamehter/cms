@@ -24,4 +24,9 @@ class posts extends Model {
     $categories = parent::get($query);
     return $categories;
   }
+
+  public function deletePost($id) {
+    $query = "DELETE FROM posts where id=" . $id;
+    return parent::Delete($query);
+  }
 }

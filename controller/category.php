@@ -12,32 +12,32 @@ class category extends Controller {
     }
 
     public function add() {
-        $postdata = file_get_contents("php://input");
-        $reqdata = json_decode($postdata, true);
 
+        $reqdata = json_decode($_POST['data'], true);
         //Eğer SEO-url girilmemişse, kategorinin adını SEO-url e çevir, aynı zamanda categoryUrl( SEO-url ) farklı bir formatta girilmişse onu da slugit ile SEO-url e çevir.
-        if("" == $reqdata['categoryUrl']){
-            $reqdata['categoryUrl'] = slugit($reqdata['categoryName']);
-        }else{
-            $reqdata['categoryUrl'] = slugit($reqdata['categoryUrl']);
+        if ("" == $reqdata['VcategoryUrl']) {
+            $reqdata['VcategoryUrl'] = slugit($reqdata['VcategoryName']);
+        } else {
+            $reqdata['VcategoryUrl'] = slugit($reqdata['VcategoryUrl']);
         }
 
 
         $data = array(
-            'name' => $reqdata['categoryName'],
-            'caturl' => $reqdata['categoryUrl'],
-            'description' => $reqdata['categoryDescription'],
-            'active' => $reqdata['categoryActive'],
-            'image' => $reqdata['categoryImageName']
+            'name' => $reqdata['VcategoryName'],
+            'caturl' => $reqdata['VcategoryUrl'],
+            'description' => $reqdata['VcategoryDescription'],
+            'active' => $reqdata['VcategoryActive'],
+            'image' => $reqdata['uploadImage']
         );
 
         $catModel = $this->model("categories");
         $res =  $catModel->kayit("category", $data);
-        echo json_encode($res);
-    }
 
+        if ($res['result'] < 1) {
+            echo json_encode(["success" => 3, "message" => "Hiçbir post/resim kaydedilemedi."]);
+            exit;
+        }
 
-    public function addImage() {
         if (isset($_FILES["image"])) {
             $error  = false;
             $image  = $_FILES["image"];
@@ -55,32 +55,17 @@ class category extends Controller {
                     case UPLOAD_ERR_INI_SIZE:
                         $error  = 'Error ' . $code . ': Dosya boyutu php.ini deki belirtilen değerleri aşıyor: <a href="http://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize" target="_blank" rel="nofollow"><span class="function-string">upload_max_filesize</span></a>';
                         break;
-                    case UPLOAD_ERR_FORM_SIZE:
-                        $error  = 'Error ' . $code . ': Yüklenen dosya, HTML formunda belirtilen <span class="const-string">MAX_FILE_SIZE</span> yönergesini aşıyor';
-                        break;
-                    case UPLOAD_ERR_PARTIAL:
-                        $error  = 'Error ' . $code . ': Dosyanın yalnızca bir kısmı yüklendi';
-                        break;
-                    case UPLOAD_ERR_NO_FILE:
-                        $error  = 'Error ' . $code . ': Dosya Yok';
-                        break;
-                    case UPLOAD_ERR_NO_TMP_DIR:
-                        $error  = 'Error ' . $code . ': Geçici dizin  yok';
-                        break;
-                    case UPLOAD_ERR_CANT_WRITE:
-                        $error  = 'Error ' . $code . ': Diske Yazma Hatası';
-                        break;
-                    case UPLOAD_ERR_EXTENSION:
-                        $error  = 'Error ' . $code . ': Dosya yüklenirken PHP uzantısı durdu';
-                        break;
                     default:
                         $error  = 'Error ' . $code . ': Bilinmeyen yükleme hatası';
                         break;
                 }
             } else {
                 $iminfo = @getimagesize($image["tmp_name"]);
+
                 if ($iminfo && is_array($iminfo)) {
                     if (isset($iminfo[2]) && in_array($iminfo[2], $valid) && is_readable($image["tmp_name"])) {
+
+
                         if (!move_uploaded_file($image["tmp_name"], $target)) {
                             $error  = "Upload edilmiş dosya taşınırken hata!";
                         }
@@ -92,9 +77,15 @@ class category extends Controller {
                 }
             }
             if (empty($error)) {
-                echo json_encode(array("error" => 0, "message" => "Yükleme başarılı"));
+
+                if ($iminfo[0] > 800 && $iminfo[1] > 600) {
+                    imageTransform($target, $target, [900, 600, false, 0, 100]);
+                }
+                echo json_encode(["success" => 1, "message" => "Yükleme başarılı"]);
+                exit;
             } else {
-                echo json_encode(array("error" => 1, "message" => $error));
+                echo json_encode(["success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => $error]);
+                exit;
             }
         }
     }

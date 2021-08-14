@@ -85,7 +85,7 @@
 
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item"><a href="#">Düzenle</a></li>
-                                        <li class="list-inline-item"><a href="#">Sil</a></li>
+                                        <li class="list-inline-item"><a href="/cms/admin/postDelete/<?= $value["id"]; ?>">Sil</a></li>
                                     </ul>
                                 </div>
                             </div>

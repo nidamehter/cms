@@ -155,16 +155,16 @@
 								case 3:
 									Swal.fire('Post Eklenemedi!', 'Tekrar Deneyin!', 'error');
 									break;
+								default:
+									Swal.fire('Bilinmeyen Bir Hata!','???','warning');
 							}
-							/*
-														setTimeout(function() {
-															window.location.href = "/cms/admin/postekle"
-														}, 2000);
-							*/
+
+							setTimeout(function() {
+								window.location.href = "/cms/admin/postList"
+							}, 2500);
+
 						}).catch(e => {
-
 							console.log(e);
-
 						});
 
 					}

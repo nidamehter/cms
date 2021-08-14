@@ -3,69 +3,71 @@ const categoryFormApp = Vue.createApp({
     data() {
         return {
             post: {
-                VcategoryName: null,
+                VcategoryName: "",
                 VcategoryUrl: "",
-                VcategoryDescription: null,
-                VcategoryActive: null,
+                VcategoryDescription: "",
+                VcategoryActive: "",
                 uploadImage: ""
             },
             image: "",
         }
     },
     methods: {
-        selectImage(event) {
-            this.image = event.target.files[0];
-            this.post.uploadImage = this.image.name;
-        },
-        async check_userAddForm() {
-            let submitData = {
-                categoryName: this.post.VcategoryName,
-                categoryUrl: this.post.VcategoryUrl,
-                categoryDescription: this.post.VcategoryDescription,
-                categoryActive: this.post.VcategoryActive,
-                categoryImageName: this.post.uploadImage
-            };
 
-            const formImageData = new FormData();
-            formImageData.append('image', this.image, this.image.name);
+		selectImage(event) {
+			this.image = event.target.files[0];
+			this.post.uploadImage = this.image.name;
+		},
 
-            let url1 = '/cms/admin/categoryAddImage';
-            let url2 = '/cms/admin/categoryAdd';
+		selectImageDrag(event) {
+			this.image = event.dataTransfer.files[0];
+			this.post.uploadImage = this.image.name;
+		},
 
-            axios.all([
+        async kaydet() {
+            if (this.image == "" && this.post.VcategoryName == "") {
+                Swal.fire('Lütfen En Az Resim ve Kategori Adı Bilgisi Ekleyiniz!', 'Eksiklik Var!', 'warning');
 
-                await axios.post(url1,
+            } else {
+                this.post.text = this.editorData;
+                
+                const formImageData = new FormData();
+                formImageData.append('image', this.image, this.image.name);
+                formImageData.append('data', JSON.stringify(this.post));
+
+                let url = '/cms/admin/categoryAdd';
+
+                await axios.post(url,
                     formImageData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
-                    }),
+                    }).then((result) => {
 
-                await axios.post(url2,
-                submitData, {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-
-            ]).then(axios.spread((data2, response) => {
-
-                if (response.data != null && response.data.success == true) {
-                    if (response.data.result < 1) {
-                        Swal.fire('Kategori Eklenemedi!', 'Tekrar Deneyin!', 'error')
-                    } else {
-                        Swal.fire('Kategori Eklendi!', 'Başarılı !', 'success')
-
-                        setTimeout(function() {
-                            window.location.href = "/cms/admin/categoryList"
-                        }, 3000);
+                    console.log(result);
+                    switch (result.data.success) {
+                        case 1:
+                            Swal.fire('Kategori Başarıyla Eklendi!', 'Başarılı!', 'success');
+                            break;
+                        case 2:
+                            Swal.fire('Kategori Verileri Resimsiz!', 'Resmi Gözden Geçiriniz!', 'warning');
+                            break;
+                        case 3:
+                            Swal.fire('Kategori Eklenemedi!', 'Tekrar Deneyin!', 'error');
+                            break;
+                        default:
+                            Swal.fire('Bilinmeyen Bir Hata!','???','warning');
                     }
-                }
+/*
+                    setTimeout(function() {
+                        window.location.href = "/cms/admin/categoryList"
+                    }, 2500);
+*/
+                }).catch(e => {
+                    console.log(e);
+                });
 
-
-            })).catch(function(err) {
-                console.log(err);
-            });
+            }
         },
 
     },
