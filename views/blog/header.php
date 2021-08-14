@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title><?= settings("blogTitle") ?></title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
     <!-- Font Awesome icons (free version)-->

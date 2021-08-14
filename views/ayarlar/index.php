@@ -5,9 +5,10 @@
 
     <!-- Right icons -->
     <div class="content">
-        <div class="col-md-10">
-            <div class="card">
-                <form action="" method="post">
+        <form action="" method="post">
+            <div class="col-md-10">
+                <div class="card">
+
                     <div class="card-header header-elements-inline">
                         <h6 class="card-title">Ayarlar</h6>
                         <div class="header-elements">
@@ -39,12 +40,16 @@
                             <div class="tab-pane fade show active" id="admin-icon-tab1">
 
                                 <div class="form-group">
-                                    <label>Site Adı:</label>
-                                    <input type="text" class="form-control" placeholder="Site Adı" name="setting[title]" value="<?= settings("title") ?>">
+                                    <label>Site Başlığı:</label>
+                                    <input type="text" class="form-control" placeholder="Site Başlığı" name="setting[title]" value="<?= settings("title") ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Logo Adı:</label>
+                                    <input type="text" class="form-control" placeholder="Logo Adı" name="setting[name]" value="<?= settings("name") ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Footer:</label>
-                                    <input type="text" class="form-control" placeholder="Açıklama" name="setting[footer]" value="<?= settings("footer") ?>">
+                                    <input type="text" class="form-control" placeholder="Footer Açıklama" name="setting[footer]" value="<?= settings("footer") ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Bakım Modu:</label>
@@ -68,10 +73,17 @@
                             </div>
 
                             <div class="tab-pane fade" id="blog-icon-tab3">
+                                
+                                <div class="form-group">
+                                    <label>Site Başlığı:</label>
+                                    <input type="text" class="form-control" placeholder="Blog Site Başlığı" name="setting[blogTitle]" value="<?= settings("blogTitle") ?>">
+                                </div>
+
                                 <div class="form-group">
                                     <label>Site Adı:</label>
-                                    <input type="text" class="form-control" placeholder="Blog Site Adı" name="setting[blogTitle]" value="<?= settings("blogTitle") ?>">
+                                    <input type="text" class="form-control" placeholder="Blog Site Adı" name="setting[blogName]" value="<?= settings("blogName") ?>">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Footer:</label>
                                     <input type="text" class="form-control" placeholder="Footer Açıklama" name="setting[blogFooter]" value="<?= settings("blogFooter") ?>">
@@ -91,9 +103,10 @@
                             </div>
                         </div>
                     </div>
-                </form>
+
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <!-- /right icons -->
 

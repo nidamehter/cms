@@ -91,7 +91,7 @@
 			<div class="navbar-brand d-flex align-items-center">
 				<div class="col-md-3 col-sm-4">
 					<div class="d-flex align-items-center">
-						<i class="icon-pulse2 mr-3 icon-2x"> CodeTalker</i>
+						<i class="icon-pulse2 mr-3 icon-2x"> <?= settings("name"); ?></i>
 
 					</div>
 				</div>
