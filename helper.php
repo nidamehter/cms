@@ -32,6 +32,18 @@ function sPost($name) {
     }
 }
 
+function sChar($arr) {
+    if (isset($arr)) {
+        if (is_array($arr)) {
+            return array_map(function ($item) {
+                return htmlspecialchars(trim($item));
+            }, $arr);
+        }
+        return htmlspecialchars(trim($arr));
+    }
+}
+
+
 function post($name) {
     if (isset($_POST[$name])) {
         return htmlspecialchars(trim($_POST[$name]));
@@ -124,9 +136,9 @@ function GenerateRandomCode($n = 11) {
  * @author "Codetalker&Blitzkrieg"
  * */
 function imageTransform($src, $dest, $dim) {
-    
+
     $imager = new Zebra_Image();
-    
+
     $imager->source_path = $src;
     $imager->target_path = $dest;
 
@@ -138,7 +150,7 @@ function imageTransform($src, $dest, $dim) {
     $imager->preserve_aspect_ratio = $dim[2]; //Görüntünün bozulmaması için görüntüyü kırparak boyutlandırır. Resmin bir kısmı kaybolur.
     $imager->rotate($dim[3]);
     $imager->jpeg_quality = $dim[4];
-   
+
     if (!$imager->resize($dim[0], $dim[1], ZEBRA_IMAGE_CROP_CENTER)) {
 
         switch ($imager->error) {

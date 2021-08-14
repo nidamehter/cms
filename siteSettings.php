@@ -1,5 +1,7 @@
 <?php
 
-$setting["title"] = "CMS-Arge";
-$setting["footer"] = "1998 - 2021 - YÖNETİM PANELİ";
-$setting["bakim"] = "2";
+$setting["title"] = "Admin Panel";
+$setting["footer"] = "2021 - Admin Panel";
+$setting["bakim"] = "1";
+$setting["blogTitle"] = "En Güncel Ajans";
+$setting["blogFooter"] = "2021";

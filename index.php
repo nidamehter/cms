@@ -1,5 +1,8 @@
 <?php
 date_default_timezone_set('Europe/Istanbul');
+session_start();
+ob_start();
+
 
 require __DIR__ . '/controller.php';
 require __DIR__ . '/route.php';
@@ -21,6 +24,7 @@ Route::run('/admin/userList', 'user@userList');
 Route::run('/admin/userEdit/{url}', 'user@edit', 'POST');       //Yok
 Route::run('/admin/userDelete/{url}', 'user@delete', 'GET');
 
+Route::run('/admin/postList', 'post@postList');
 Route::run('/admin/postekle', 'post@index');
 Route::run('/admin/postekle', 'post@kaydet', 'POST');
 

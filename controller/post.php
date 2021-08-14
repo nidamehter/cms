@@ -11,6 +11,16 @@ class post extends Controller {
         ]);
     }
 
+    function postList() {
+
+        $postmodel = $this->model("posts");
+        $posts = $postmodel->getAll();
+
+        $this->view('post/postList', [
+            "posts" => $posts["result"]
+        ]);
+    }
+
     function kaydet() {
 
         /* Sadece RAW json data alabiliyor.

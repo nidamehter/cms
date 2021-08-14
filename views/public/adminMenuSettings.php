@@ -24,6 +24,7 @@ $menuler = [
         "name" => "Post",
         "icon" => "icon-puzzle",
         "subMenu" => [
+            "admin/postList" => "Postlar",
             "admin/postekle" => "Post Ekle",
             "admin/postduzenle" => "Post Düzenle"
         ]
@@ -31,12 +32,11 @@ $menuler = [
     "ayarlar" => [
         "name" => "Ayarlar",
         "icon" => "icon-cogs",
-        "subMenu"=> [
+        "subMenu" => [
             "admin/Ayar" => "CMS Ayarları"
-            
+
         ]
     ],
 
 
 ];
-
