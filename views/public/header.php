@@ -41,7 +41,10 @@
 	<script src="global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
 	<script src="global_assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
 	<script src="global_assets/js/demo_pages/uploader_bootstrap.js"></script>
+	<script src="global_assets/js/demo_pages/extension_dnd.js"></script>
 	<!-- /theme JS files -->
+
+
 
 	<style>
 		.ck-editor__editable {

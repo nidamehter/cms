@@ -22,7 +22,9 @@
 
                     <div class="card-body">
                         <ul class="nav nav-tabs nav-tabs-highlight">
-                            <li class="nav-item"><a href="#admin-icon-tab1" class="nav-link active" data-toggle="tab">Admin Panel<i class="icon-menu7 ml-2"></i></a></li>
+                            <li class="nav-item"><a href="#ayar" class="nav-link active" data-toggle="tab">Deneme<i class="icon-menu7 ml-2"></i></a></li>
+
+                            <li class="nav-item"><a href="#admin-icon-tab1" class="nav-link" data-toggle="tab">Admin Panel<i class="icon-menu7 ml-2"></i></a></li>
 
                             <li class="nav-item"><a href="#generalPage-icon-tab2" class="nav-link" data-toggle="tab">Sayfa Ayarları<i class="icon-mention ml-2"></i></a></li>
 
@@ -37,7 +39,11 @@
 
                         <div class="tab-content">
 
-                            <div class="tab-pane fade show active" id="admin-icon-tab1">
+                            <div id="ayar" class="tab-pane fade show active">
+
+                            </div>
+
+                            <div class="tab-pane fade" id="admin-icon-tab1">
 
                                 <div class="form-group">
                                     <label>Site Başlığı:</label>
@@ -73,7 +79,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="blog-icon-tab3">
-                                
+
                                 <div class="form-group">
                                     <label>Site Başlığı:</label>
                                     <input type="text" class="form-control" placeholder="Blog Site Başlığı" name="setting[blogTitle]" value="<?= settings("blogTitle") ?>">
@@ -98,8 +104,37 @@
                             </div>
 
                             <div class="tab-pane fade" id="right-icon-tab4">
-                                Aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda
-                                labore aesthet.
+
+                                <div class="box- menu-container">
+                                    <h2>Menü Ekle</h2>
+                                    <form action="" method="post">
+
+                                        <div class="col-md-4" style="padding-bottom: 10px">
+                                            <input class="form-control " type="text" name="menu_title" value="Ana Menü" placeholder="Menü Başlığı">
+                                        </div>
+
+                                        <ul id="menu">
+                                            <li>
+                                                <div class="menu-item col-md-4">
+                                                    <a href="#" class="delete-menu">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                    <input class="form-control" type="text" name="title[]" placeholder="Menü Adı">
+                                                    <input class="form-control" type="text" name="url[]" placeholder="Menü Linki">
+                                                </div>
+                                                <div class="sub-menu col-md-4">
+                                                    <ul></ul>
+                                                </div>
+                                                <a href="#" class="btn btn-success add-submenu">Alt Menü Ekle</a>
+                                            </li>
+                                        </ul>
+                                        <div class="menu-btn">
+                                            <a href="#" id="add-menu" class="btn btn-success">Menü Ekle</a>
+                                            <button class="btn btn-success" type="submit" value="1" name="submit">Kaydet</button>
+                                        </div>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,6 +152,63 @@
 </div>
 <!-- /page content -->
 </div>
+<!-- 
+<script>
+
+    $(function() {
+        $('#add-menu').on('click', function(e) {
+            $('#menu').append(
+                /*html*/
+                `<li>
+                    <div class="menu-item col-md-4">
+                        <a href="#" class="delete-menu">
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <input class="form-control" type="text" name="title[]" placeholder="Menü Adı">
+                        <input class="form-control" type="text" name="url[]" placeholder="Menü Linki">
+                    </div>
+                    
+                    <div class="sub-menu col-md-4">
+                        <ul></ul>
+                    </div>
+                    <a href="#" class="add-submenu btn btn-success">Alt Menü Ekle</a>
+                </li>`
+            );
+
+            e.preventDefault();
+        });
+
+        $(document.body).on('click', '.add-submenu', function(e) {
+            var index = $(this).closest('li').index();
+            $(this).prev('.sub-menu').find('ul').append(
+                /*html*/
+                `<li>
+                    <div class="menu-item">
+                        <a href="#" class="delete-menu">
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <input class="form-control" type="text" name="sub_title_' + index + '[]" placeholder="Menü Adı">
+                        <input class="form-control" type="text" name="sub_url_' + index + '[]" placeholder="Menü Linki">
+                    </div>
+                </li>`);
+
+            e.preventDefault();
+        });
+
+        $(document.body).on('click', '.delete-menu', function(e) {
+            if ($('#menu li').length === 1) {
+                alert('En az 1 menü içeriği kalmak zorundadır!');
+            } else {
+                $(this).closest('li').remove();
+            }
+            e.preventDefault();
+        });
+
+    });
+
+</script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@3.0.2/dist/vue.global.js"></script>
+<script src="menuAdd.js"></script>
 
 </body>
 

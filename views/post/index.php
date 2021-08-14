@@ -64,7 +64,7 @@
 									<div class="col-md-8">
 										<ckeditor class="ck-editor__editable" :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
 										<br>
-										<button v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save </button>
+										<button id="block-page" v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save </button>
 									</div>
 								</div>
 
@@ -156,7 +156,7 @@
 									Swal.fire('Post Eklenemedi!', 'Tekrar Deneyin!', 'error');
 									break;
 								default:
-									Swal.fire('Bilinmeyen Bir Hata!','???','warning');
+									Swal.fire('Bilinmeyen Bir Hata!', '???', 'warning');
 							}
 
 							setTimeout(function() {
@@ -176,6 +176,10 @@
 		});
 	</script>
 	<!-- /VUE2-POST -->
+
+<!-- JQUERY -->
+<script src="wait.js"></script>
+<!-- /JQUERY -->
 
 </div>
 
