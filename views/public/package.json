@@ -4,9 +4,11 @@
     "@ckeditor/ckeditor5-build-decoupled-document": "^29.1.0",
     "@ckeditor/ckeditor5-editor-decoupled": "^29.1.0",
     "@ckeditor/ckeditor5-vue2": "^1.0.5",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.0.2",
     "piexifjs": "^1.0.4",
-    "sweetalert2": "^11.1.2"
+    "sweetalert2": "^11.1.2",
+    "vue2-animate": "^2.1.4"
   },
   "name": "public",
   "version": "1.0.0",
