@@ -2,12 +2,7 @@
 
 
 
-<?php
-echo "<pre>";
-print_r($menus);
-echo "</pre>";
-exit;
-?>
+
 
 <body>
 
