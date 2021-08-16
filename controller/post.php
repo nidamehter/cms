@@ -28,6 +28,7 @@ class post extends Controller {
         $postdata = file_get_contents("php://input");
         $data = json_decode($postdata, true);
         */
+        
         $data = json_decode($_POST['data'], true);
 
         $saveData = array(

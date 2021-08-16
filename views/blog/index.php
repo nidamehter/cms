@@ -49,14 +49,6 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
 
 
-                        <div class="col-5">
-                            <div class="sidebar-item">
-                                <div class="make-me-sticky">
-                                    <h3>Item 1</h3>
-                                </div>
-                            </div>
-                        </div>
-
                         <div id="sidebar-wrapper">
 
                             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">

@@ -15,7 +15,6 @@ class Model extends Database {
             ];
 
             return $this->result;
-            
         } catch (PDOException $exception) {
             $this->result = [
                 "success" => false,
@@ -124,8 +123,6 @@ class Model extends Database {
         }
     }
 
-
-
     function InsertQueryGenerator($table, $model) {
         $keys = array();
         $values = array();
@@ -155,4 +152,5 @@ class Model extends Database {
         $query .= ');';
         return $query;
     }
+
 }

@@ -82,6 +82,28 @@ function UpdateQueryGenerator($table, $model, $id) {
     return $query;
 }
 
+function UpdateQueryGeneratorMenu($table, $model, $title) {
+    $keys = array();
+    $values = array();
+
+    foreach (json_decode($model) as $key => $value) {
+        array_push($keys, $key);
+        array_push($values, $value);
+    }
+
+    $query = 'UPDATE ' . $table . ' SET ';
+    for ($i = 0; $i < count($keys); $i++) {
+        if ($i < count($keys) - 1) {
+            $query .= $keys[$i] . " = '$values[$i]',";
+        } else {
+            $query .= $keys[$i] . " = '$values[$i]'";;
+        }
+    }
+    $query .= ' WHERE title="' .$title ;
+    $query .= '";';
+    return $query;
+}
+
 function InsertQueryGenerator($table, $model) {
     $keys = array();
     $values = array();

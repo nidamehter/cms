@@ -35,8 +35,9 @@ Route::run('/admin/categoryAdd', 'category@add', 'POST');
 Route::run('/admin/categoryDelete/{url}', 'category@delete', 'GET');
 Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');        //Yok
 
-Route::run('/admin/Ayar', 'settings@index');
-Route::run('/admin/Ayar', 'settings@index', "POST");
+Route::run('/admin/Ayar', 'setting@index');
+Route::run('/admin/ayarBlog', 'setting@ayarBlog', "POST");
+
 Route::run('/test', 'settings@test');
 
 //Bakım Modu Aktifse Anasayfaya girmemesi için /admin yolu olmayan diğer sayfaları engelle

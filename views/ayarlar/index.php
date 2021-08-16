@@ -2,7 +2,6 @@
 
 <div class="content-wrapper">
 
-
     <!-- Right icons -->
     <div class="content">
         <form action="" method="post">
@@ -24,7 +23,7 @@
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="nav-item"><a href="#" class="nav-link active" data-toggle="tab">Deneme<i class="icon-menu7 ml-2"></i></a></li>
 
-                            <li class="nav-item"><a href="#admin-icon-tab1" class="nav-link" data-toggle="tab">Admin Panel<i class="icon-menu7 ml-2"></i></a></li>
+                            <li class="nav-item"><a href="#admin-icon-tab1" class="nav-link" data-toggle="tab">Admin Panel<i class="icon-gear ml-2"></i></a></li>
 
                             <li class="nav-item"><a href="#generalPage-icon-tab2" class="nav-link" data-toggle="tab">Sayfa Ayarları<i class="icon-mention ml-2"></i></a></li>
 
@@ -101,70 +100,98 @@
                             </div>
 
                             <div class="tab-pane fade" id="menuAyar">
-                                <div id="menuAyar" class="box- menu-container">
 
-                                    <h2>Menü Ekle</h2>
-                                    <div ref="menuRef">
-                                        <div class="tab-pane fade show active">
-                                            <!-- Menü Array ini döngüye al ve her bir değeri v-model ile BIND la-->
-                                            <div v-for="menu in menus">
-                                                <div class="col-md-4" style="padding-bottom: 10px">
-                                                    <button @click.prevent="menuSil(menu.id)" class="delete-menu">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                    <input class="form-control " type="text" v-model="menu.name" placeholder="Ana Menü Başlığı">
-                                                </div>
+                                <div class="card">
 
-                                                <!-- Alt Menü Varsa Döngüye Sok -->
-                                                <div v-if="menu.subMenus">
-                                                    <div v-for="sub in menu.subMenus">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="menu-item col-md-4">
-                                                                    <button @click.prevent="menuSil(menu.id, sub.id)" class="delete-menu">
-                                                                        <i class="fa fa-times"></i>
-                                                                    </button>
+                                    <div class="card-header header-elements-inline">
+                                        <h6 class="card-title">Menü Ekle</h6>
+                                        <div class="header-elements">
+                                            <div class="list-icons">
+                                                <a class="list-icons-item" data-action="collapse"></a>
+                                                <a class="list-icons-item" data-action="reload"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="menuAyar" class="box- menu-container">
+                                            
+                                            <p ref="gelen" style="display:none"> <?php isset($menus[0]['content']) ? print_r($menus[0]['content']) : null ?></p>
+                                            <p> </p>
 
-                                                                    <input class="form-control" type="text" v-model="sub.name" placeholder="Alt Menü Adı">
+                                            <div ref="menuRef">
+                                                <div class="tab-pane fade show active">
+                                                    <!-- Menü Array ini döngüye al ve her bir değeri v-model ile BIND la-->
+                                                    <div v-for="menu in menus">
+                                                        <div class="col-md-4" style="padding-bottom: 10px">
+                                                            <button @click.prevent="menuSil(menu.id)" class="delete-menu btn btn-light">
+                                                                <i class="icon-cancel-circle2"></i>
+                                                            </button>
+                                                            <input class="form-control " type="text" v-model="menu.name" placeholder="Ana Menü Başlığı">
 
-                                                                    <input class="form-control" type="text" v-model="sub.value" placeholder="Alt Menü Linki">
+                                                            <input class="form-control " type="text" v-model="menu.value" placeholder="Ana Menü Linki">
+                                                        </div>
 
-                                                                </div>
+                                                        <!-- Alt Menü Varsa Döngüye Sok -->
+                                                        <div v-if="menu.subMenus">
+                                                            <div v-for="sub in menu.subMenus">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="menu-item col-md-4">
+                                                                            <button @click.prevent="menuSil(menu.id, sub.id)" class="delete-menu btn btn-light">
+                                                                                <i class="icon-cancel-circle2"></i>
+                                                                            </button>
 
-                                                            </li>
-                                                        </ul>
+                                                                            <input class="form-control" type="text" v-model="sub.name" placeholder="Alt Menü Adı">
 
+                                                                            <input class="form-control" type="text" v-model="sub.value" placeholder="Alt Menü Linki">
+
+                                                                        </div>
+
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <button @click.prevent="subMenuAdd(menu.id)" class="btn btn-warning add-submenu">Alt Menü Ekle</button>
+                                                        <hr />
                                                     </div>
+
+                                                    <div class="menu-btn">
+                                                        <button id="add-menu" class="btn btn-warning" @click.prevent="mainMenuAdd()">Menü Ekle</button>
+
+                                                        <span class="btn btn-success" @click="menuKaydet()">Kaydet</span>
+                                                    </div>
+
                                                 </div>
-
-                                                <button @click.prevent="subMenuAdd(menu.id)" class="btn btn-success add-submenu">Alt Menü Ekle</button>
-                                                <hr />
                                             </div>
-
-                                            <div class="menu-btn">
-                                                <button @click.prevent="mainMenuAdd()" id="add-menu" class="btn btn-success">Menü Ekle</button>
-                                                <button class="btn btn-success" type="submit" value="1" name="submit">Kaydet</button>
-                                            </div>
-
-
                                         </div>
 
                                     </div>
 
-
                                 </div>
-                                <div>
 
-                                    <pre>
-                                    {{menus}}
-                                    </pre>
 
+                                <div class="card">
+
+                                    <div class="card-header header-elements-inline">
+                                        <h6 class="card-title">Navbar Menüleri</h6>
+                                        <div class="header-elements">
+                                            <div class="list-icons">
+                                                <a class="list-icons-item" data-action="collapse"></a>
+                                                <a class="list-icons-item" data-action="reload"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+
+                                    </div>
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
-
                 </div>
             </div>
         </form>

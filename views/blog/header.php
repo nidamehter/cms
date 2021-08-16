@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="js/space/style.css">
     <style>
         body {
-            position: relative;
+            position: relative;z
         }
 
         .offcanvasRenk {

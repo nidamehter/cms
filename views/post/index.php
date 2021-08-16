@@ -150,7 +150,7 @@
 									Swal.fire('Post Başarıyla Eklendi!', 'Başarılı!', 'success');
 									break;
 								case 2:
-									Swal.fire('Post Verileri Resimsiz!', 'Resmi Gözden Geçiriniz!', 'warning');
+									Swal.fire('Post Resimsiz Eklendi!', 'Resmi Gözden Geçiriniz!', 'warning');
 									break;
 								case 3:
 									Swal.fire('Post Eklenemedi!', 'Tekrar Deneyin!', 'error');
