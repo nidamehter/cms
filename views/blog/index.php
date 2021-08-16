@@ -1,5 +1,14 @@
 <?php require "header.php"; ?>
 
+
+
+<?php
+echo "<pre>";
+print_r($menus);
+echo "</pre>";
+exit;
+?>
+
 <body>
 
 
@@ -46,22 +55,22 @@
             <nav class="floating-menu ">
                 <ul class="main-menu">
                     <li>
-                    <a href="/cms/anasayfa/uzay" class="ripple">
+                        <a href="/cms/anasayfa/uzay" class="ripple">
                             <i class="fas fa-home fa-lg"></i>
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="#" class="ripple">
                             <i class="far fa-address-card fa-lg"></i>
                         </a>
                     </li>
-               
+
                     <li>
-                    <a class="ripple" data-bs-toggle="offcanvas" href="#offcanvasExample"  aria-controls="offcanvasExample">
-                        <i class="fab fa-blogger-b fa-lg"></i>
+                        <a class="ripple" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">
+                            <i class="fab fa-blogger-b fa-lg"></i>
                         </a>
-                       
+
                     </li>
                 </ul>
                 <div class="menu-bg"></div>
@@ -74,6 +83,9 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
 
                         <div id="sidebar-wrapper">
+
+
+
                             <!--
                             <div class="category-sidebar" >
                             <button class="btn btn-primary"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
