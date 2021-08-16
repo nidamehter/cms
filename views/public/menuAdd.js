@@ -1,4 +1,4 @@
-
+Vue.use(Clipboard)
 const menuApp = Vue.createApp({
     data(){
         return{

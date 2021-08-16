@@ -141,7 +141,6 @@
                                                 <hr />
                                             </div>
 
-
                                             <div class="menu-btn">
                                                 <button @click.prevent="mainMenuAdd()" id="add-menu" class="btn btn-success">Menü Ekle</button>
                                                 <button class="btn btn-success" type="submit" value="1" name="submit">Kaydet</button>
@@ -179,62 +178,8 @@
 </div>
 <!-- /page content -->
 </div>
-<!-- 
-<script>
 
-    $(function() {
-        $('#add-menu').on('click', function(e) {
-            $('#menu').append(
-                /*html*/
-                `<li>
-                    <div class="menu-item col-md-4">
-                        <a href="#" class="delete-menu">
-                            <i class="fa fa-times"></i>
-                        </a>
-                        <input class="form-control" type="text" name="title[]" placeholder="Menü Adı">
-                        <input class="form-control" type="text" name="url[]" placeholder="Menü Linki">
-                    </div>
-                    
-                    <div class="sub-menu col-md-4">
-                        <ul></ul>
-                    </div>
-                    <a href="#" class="add-submenu btn btn-success">Alt Menü Ekle</a>
-                </li>`
-            );
-
-            e.preventDefault();
-        });
-
-        $(document.body).on('click', '.add-submenu', function(e) {
-            var index = $(this).closest('li').index();
-            $(this).prev('.sub-menu').find('ul').append(
-                /*html*/
-                `<li>
-                    <div class="menu-item">
-                        <a href="#" class="delete-menu">
-                            <i class="fa fa-times"></i>
-                        </a>
-                        <input class="form-control" type="text" name="sub_title_' + index + '[]" placeholder="Menü Adı">
-                        <input class="form-control" type="text" name="sub_url_' + index + '[]" placeholder="Menü Linki">
-                    </div>
-                </li>`);
-
-            e.preventDefault();
-        });
-
-        $(document.body).on('click', '.delete-menu', function(e) {
-            if ($('#menu li').length === 1) {
-                alert('En az 1 menü içeriği kalmak zorundadır!');
-            } else {
-                $(this).closest('li').remove();
-            }
-            e.preventDefault();
-        });
-
-    });
-
-</script> -->
-
+<script nomodule src="node_modules/clipboard/src/clipboard.js"> </script>
 <script src="https://unpkg.com/vue@3.2.2/dist/vue.global.js"></script>
 <script src="menuAdd.js"></script>
 

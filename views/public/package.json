@@ -8,7 +8,8 @@
     "bootstrap": "^5.0.2",
     "piexifjs": "^1.0.4",
     "sweetalert2": "^11.1.2",
-    "vue2-animate": "^2.1.4"
+    "vue2-animate": "^2.1.4",
+    "vue3-clipboard": "^1.0.0"
   },
   "name": "public",
   "version": "1.0.0",
