@@ -1,8 +1,10 @@
 <?php
 
-class post extends Controller {
+class post extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $postmodel = $this->model("posts");
         $category = $postmodel->category();
 
@@ -12,7 +14,8 @@ class post extends Controller {
     }
 
 
-    function postList() {
+    function postList()
+    {
 
         $postmodel = $this->model("posts");
         $posts = $postmodel->getAll();
@@ -22,13 +25,14 @@ class post extends Controller {
         ]);
     }
 
-    function kaydet() {
+    function kaydet()
+    {
 
         /* Sadece RAW json data alabiliyor.
         $postdata = file_get_contents("php://input");
         $data = json_decode($postdata, true);
         */
-        
+
         $data = json_decode($_POST['data'], true);
 
         $saveData = array(
@@ -101,7 +105,27 @@ class post extends Controller {
         }
     }
 
-    function delete($id) {
+
+    function edit($id)
+    { 
+    
+        $postmodel = $this->model("posts");
+        $posts = $postmodel->getOneRecord($id);
+        $posts["result"][0]['text']  = htmlspecialchars( $posts["result"][0]['text']);    
+           $this->view('post/index', [
+            "post" => json_encode($posts["result"], JSON_UNESCAPED_UNICODE) 
+        ]);
+
+    }
+
+
+
+
+
+
+
+    function delete($id)
+    {
         $userModel = $this->model("posts");
         $results = $userModel->deletePost($id);
         header("Location: /cms/admin/postList");

@@ -1,4 +1,5 @@
-<?php require 'views/public/header.php'; ?>
+<?php require 'views/public/header.php';
+?>
 
 <!-- content-wrapper -->
 <div class="content-wrapper">
@@ -19,7 +20,7 @@
 						<!-- Multiple row inputs (vertical) -->
 						<div class="card">
 							<div id="post" class="card-body">
-
+								<p ref="gelen" style="display:none"> <?php isset($post) ? print_r($post) : null ?></p>
 								<div class="row">
 									<div class="col-md-4">
 										<label>Yazar</label>
@@ -62,7 +63,7 @@
 
 								<div class="row">
 									<div class="col-md-8">
-										<ckeditor class="ck-editor__editable" :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+										<ckeditor class="ck-editor__editable" :editor="editor" v-model="editorData" :config="editorConfig" @ready="onEditorReady"></ckeditor>
 										<br>
 										<button id="block-page" v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save </button>
 									</div>
@@ -102,6 +103,7 @@
 					placeholder: 'Lütfen içerik giriniz'
 				},
 				post: {
+					id: null,
 					author: "",
 					categoryid: "",
 					title: "",
@@ -109,10 +111,15 @@
 					text: "",
 					uploadImage: ""
 				},
-				image: ""
+				temp: null,
+				image: "",
+				existPost: null
 			},
 
 			methods: {
+				onEditorReady(){
+					this.editorData = this.temp
+				},
 				selectImage(event) {
 					this.image = event.target.files[0];
 					this.post.uploadImage = this.image.name;
@@ -135,7 +142,6 @@
 						formImageData.append('data', JSON.stringify(this.post));
 
 						let url = '/cms/admin/postekle';
-
 
 						await axios.post(url,
 							formImageData, {
@@ -172,14 +178,40 @@
 			},
 
 			created() {},
-			mounted() {}
+			mounted() {
+				this.existPost = this.$refs.gelen.innerText;
+				if (this.existPost != null) {
+
+					var temp = JSON.parse(this.existPost);
+
+
+					var {
+						id,
+						title,
+						message,
+						categoryid,
+						author,
+						text,
+
+					} = temp[0];
+					console.log(temp[0]);
+					this.post.id = id
+					this.post.author = author
+					this.post.categoryid = categoryid
+					this.post.title = title
+					this.post.message = message
+					this.temp = text
+
+
+				}
+			}
 		});
 	</script>
 	<!-- /VUE2-POST -->
 
-<!-- JQUERY -->
-<script src="wait.js"></script>
-<!-- /JQUERY -->
+	<!-- JQUERY -->
+	<script src="wait.js"></script>
+	<!-- /JQUERY -->
 
 </div>
 

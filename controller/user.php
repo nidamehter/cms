@@ -69,8 +69,6 @@ class user extends Controller
             $userModel = $this->model("users");
             $results = $userModel->editUser($tableName, $data, $id);
             echo json_encode((object)$results);
-        
-
 
     }
 
