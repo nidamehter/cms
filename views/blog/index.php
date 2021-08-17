@@ -1,7 +1,7 @@
-<?php require "header.php"; ?>
+<?php require "header.php";
 
 
-
+?>
 
 
 <body>
@@ -9,6 +9,7 @@
 
     <div class="container-fluid">
         <!-- Navigation-->
+
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="index.html"><?= settings("blogName") ?></a>
@@ -18,10 +19,35 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+
+                        <?php foreach ($menus as $key => $value) : ?>
+
+                            <?php if (empty($value['subMenus'])) : ?>
+
+                                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= $value['value'] ?>"><?= $value['name'] ?> </a></li>
+
+                            <?php else : ?>
+
+                                <li class="nav-item dropdown">
+
+                                    <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <?= $value['name'] ?>
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                        <?php foreach ($value['subMenus'] as $k => $v) : ?>
+                                            <li><a class="dropdown-item" href="<?= $v['value'] ?>"><?= $v['name'] ?></a></li>
+                                        <?php endforeach; ?>
+
+                                    </ul>
+
+                                </li>
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
                     </ul>
                 </div>
             </div>
@@ -100,8 +126,7 @@
                                             <?php foreach ($blogCategoryData as $key => $value) : ?>
 
                                                 <div class="list-group <?= $value['caturl'] == getLastPath(1) ? 'active' : null ?>">
-                                                    <a class="list-group-item list-group-item-action" href="#list-i
-                                                            em-1" v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
+                                                    <a class="list-group-item list-group-item-action" href="#list-iem-1" v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
                                                         <span class="far fa-bookmark"></span> <?= $value['name']; ?>
                                                     </a>
                                                 </div>
@@ -172,9 +197,6 @@
     <script src="js/space/index.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-
 
 </body>
 
