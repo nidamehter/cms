@@ -28,7 +28,9 @@ Route::run('/admin/postList', 'post@postList');
 Route::run('/admin/postekle', 'post@index');
 Route::run('/admin/postekle', 'post@kaydet', 'POST');
 Route::run('/admin/postDelete/{url}', 'post@delete', 'GET');
+
 Route::run('/admin/postEdit/{url}', 'post@edit', 'GET');
+Route::run('/admin/postEdit', 'post@editSubmit', 'POST');
 
 Route::run('/admin/categoryList', 'category@list');
 Route::run('/admin/categoryAdd', 'category@index');

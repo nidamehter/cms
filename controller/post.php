@@ -53,74 +53,72 @@ class post extends Controller
             exit;
         }
 
-        if (isset($_FILES["image"])) {
-            $error  = false;
-            $image  = $_FILES["image"];
-            $code   = (int)$image["error"];
-            $valid  = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
-            $folder = PATH . "/views/blog/upload/";
-            $target = $folder . $image["name"];
+        $result = imageSave('image');
 
-            if (!file_exists($folder)) {
-                @mkdir($folder, 0755, true);
-            }
-
-            if ($code !== UPLOAD_ERR_OK) {
-                switch ($code) {
-                    case UPLOAD_ERR_INI_SIZE:
-                        $error  = 'Error ' . $code . ': Dosya boyutu php.ini deki belirtilen değerleri aşıyor: <a href="http://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize" target="_blank" rel="nofollow"><span class="function-string">upload_max_filesize</span></a>';
-                        break;
-                    default:
-                        $error  = 'Error ' . $code . ': Bilinmeyen yükleme hatası';
-                        break;
-                }
-            } else {
-                $iminfo = @getimagesize($image["tmp_name"]);
-
-                if ($iminfo && is_array($iminfo)) {
-                    if (isset($iminfo[2]) && in_array($iminfo[2], $valid) && is_readable($image["tmp_name"])) {
-
-
-                        if (!move_uploaded_file($image["tmp_name"], $target)) {
-                            $error  = "Upload edilmiş dosya taşınırken hata!";
-                        }
-                    } else {
-                        $error  = "Resim dosyası okunamıyor veya geçersiz format";
-                    }
-                } else {
-                    $error  = "Sadece şu formatlar: jpg, gif, png, ...";
-                }
-            }
-            if (empty($error)) {
-
-                if ($iminfo[0] > 800 && $iminfo[1] > 600) {
-                    imageTransform($target, $target, [900, 600, false, 0, 100]);
-                }
-                echo json_encode(["success" => 1, "message" => "Yükleme başarılı"]);
-                exit;
-            } else {
-                echo json_encode(["success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => $error]);
-                exit;
-            }
+        if ($result == 1) {
+            echo json_encode(["success" => 1, "message" => "Yükleme başarılı"]);
+        } else {
+            echo json_encode(["success" => 2, "message" => "Post verileri veri tabanına eklendi fakat resim eklenemedi!", "error" => 1]);
         }
     }
 
 
     function edit($id)
-    { 
-    
+    {
+
         $postmodel = $this->model("posts");
         $posts = $postmodel->getOneRecord($id);
-        $posts["result"][0]['text']  = htmlspecialchars( $posts["result"][0]['text']);    
-           $this->view('post/index', [
-            "post" => json_encode($posts["result"], JSON_UNESCAPED_UNICODE) 
-        ]);
+        $posts["result"][0]['text']  = htmlspecialchars($posts["result"][0]['text']);
 
+        $category = $postmodel->category();
+
+        $this->view('post/index', [
+            "post" => json_encode($posts["result"], JSON_UNESCAPED_UNICODE),
+            "categories" => $category["result"]
+        ]);
     }
 
+    function editSubmit()
+    {
+
+        $editedData = json_decode($_POST['data'], true);
+
+        $reqData = $editedData[0];
 
 
 
+
+
+        $id = $reqData['id'];
+        $data = [
+            'author' => $reqData['author'],
+            'categoryid' => $reqData['categoryid'],
+            'title' => $reqData['title'],
+            'message' => $reqData['message'],
+            'text' => $reqData['text'],
+            'created' => date('Y-m-d H:i:s', time()),
+
+        ];
+
+
+        if (isset($editedData[1])) {
+            $data['uploadedImageName'] =  $editedData[1]['uploadImage'];
+        }
+
+        $imageResult = imageSave('image');
+
+        $tableName = "posts";
+        $userModel = $this->model("posts");
+        $editResult = $userModel->editPosts($tableName, $data, $id);
+
+        if ($imageResult == 1 && $editResult["success"] == true) {
+            echo json_encode(["success" => 1, "message" => "Düzenleme Başarılı", "error" => 0]);
+        } else if ($imageResult == 2) {
+            echo json_encode(["success" => 2, "message" => "Resim eklemede eksik olabilir!", "error" => 1]);
+        } else if ($editResult["result"] < 1) {
+            echo json_encode(["success" => 3, "message" => "Düzenlemede hata!", "error" => 1]);
+        }
+    }
 
 
 

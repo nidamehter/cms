@@ -3,24 +3,28 @@ require "siteSettings.php";
 
 define("PATH", realpath('.'));
 
-function getLastPath($number = 0) {
+function getLastPath($number = 0)
+{
     $lastPath = explode("/", $_SERVER['REQUEST_URI']);
     $index = count($lastPath) - $number;
     return $lastPath[$index];
 }
 
-function settings($name) {
+function settings($name)
+{
     global $setting;
     return (isset($setting[$name]) ? $setting[$name] : false);
 }
 
-function session($name) {
+function session($name)
+{
     if (isset($_SESSION[$name])) {
         return $_SESSION[$name];
     }
 }
 
-function sPost($name) {
+function sPost($name)
+{
     if (isset($_POST[$name])) {
         if (is_array($_POST[$name])) {
             return array_map(function ($item) {
@@ -32,7 +36,8 @@ function sPost($name) {
     }
 }
 
-function sChar($arr) {
+function sChar($arr)
+{
     if (isset($arr)) {
         if (is_array($arr)) {
             return array_map(function ($item) {
@@ -44,13 +49,15 @@ function sChar($arr) {
 }
 
 
-function post($name) {
+function post($name)
+{
     if (isset($_POST[$name])) {
         return htmlspecialchars(trim($_POST[$name]));
     }
 }
 
-function slugit($str, $replace = array(), $delimiter = '-') {
+function slugit($str, $replace = array(), $delimiter = '-')
+{
     if (!empty($replace)) {
         $str = str_replace((array)$replace, ' ', $str);
     }
@@ -61,7 +68,8 @@ function slugit($str, $replace = array(), $delimiter = '-') {
     return $clean;
 }
 
-function UpdateQueryGenerator($table, $model, $id) {
+function UpdateQueryGenerator($table, $model, $id)
+{
     $keys = array();
     $values = array();
 
@@ -82,7 +90,8 @@ function UpdateQueryGenerator($table, $model, $id) {
     return $query;
 }
 
-function UpdateQueryGeneratorMenu($table, $model, $title) {
+function UpdateQueryGeneratorMenu($table, $model, $title)
+{
     $keys = array();
     $values = array();
 
@@ -99,12 +108,13 @@ function UpdateQueryGeneratorMenu($table, $model, $title) {
             $query .= $keys[$i] . " = '$values[$i]'";;
         }
     }
-    $query .= ' WHERE title="' .$title ;
+    $query .= ' WHERE title="' . $title;
     $query .= '";';
     return $query;
 }
 
-function InsertQueryGenerator($table, $model) {
+function InsertQueryGenerator($table, $model)
+{
     $keys = array();
     $values = array();
 
@@ -134,7 +144,8 @@ function InsertQueryGenerator($table, $model) {
     return $query;
 }
 
-function GenerateRandomCode($n = 11) {
+function GenerateRandomCode($n = 11)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
     for ($i = 0; $i < $n; $i++) {
@@ -143,6 +154,65 @@ function GenerateRandomCode($n = 11) {
     }
     return $randomString;
 }
+
+
+function imageSave($name)
+{
+
+    if (isset($_FILES[$name])) {
+        $error  = false;
+        $image  = $_FILES[$name];
+        $code   = (int)$image["error"];
+        $valid  = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+        $folder = PATH . "/views/blog/upload/";
+        $target = $folder . $image["name"];
+
+        if (!file_exists($folder)) {
+            @mkdir($folder, 0755, true);
+        }
+
+        if ($code !== UPLOAD_ERR_OK) {
+            switch ($code) {
+                case UPLOAD_ERR_INI_SIZE:
+                    $error  = 'Error ' . $code . ': Dosya boyutu php.ini deki belirtilen değerleri aşıyor: <a href="http://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize" target="_blank" rel="nofollow"><span class="function-string">upload_max_filesize</span></a>';
+                    break;
+                default:
+                    $error  = 'Error ' . $code . ': Bilinmeyen yükleme hatası';
+                    break;
+            }
+        } else {
+            $iminfo = @getimagesize($image["tmp_name"]);
+
+            if ($iminfo && is_array($iminfo)) {
+                if (isset($iminfo[2]) && in_array($iminfo[2], $valid) && is_readable($image["tmp_name"])) {
+
+
+                    if (!move_uploaded_file($image["tmp_name"], $target)) {
+                        $error  = "Upload edilmiş dosya taşınırken hata!";
+                    }
+                } else {
+                    $error  = "Resim dosyası okunamıyor veya geçersiz format";
+                }
+            } else {
+                $error  = "Sadece şu formatlar: jpg, gif, png, ...";
+            }
+        }
+        if (empty($error)) {
+
+            if ($iminfo[0] > 800 && $iminfo[1] > 600) {
+                imageTransform($target, $target, [900, 600, false, 0, 100]);
+            }
+            return 1;
+            exit;
+        } else {
+            return 2;
+            exit;
+        }
+    }
+}
+
+
+
 
 
 /**
@@ -157,7 +227,8 @@ function GenerateRandomCode($n = 11) {
  * @param array $dim [Width, Height, AspectRatio(True|False), Rotate, Quality]
  * @author "Codetalker&Blitzkrieg"
  * */
-function imageTransform($src, $dest, $dim) {
+function imageTransform($src, $dest, $dim)
+{
 
     $imager = new Zebra_Image();
 

@@ -65,7 +65,14 @@
 									<div class="col-md-8">
 										<ckeditor class="ck-editor__editable" :editor="editor" v-model="editorData" :config="editorConfig" @ready="onEditorReady"></ckeditor>
 										<br>
-										<button id="block-page" v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Save </button>
+
+										<div v-if="post.id">
+											<button id="block-page" v-on:click="edit()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Düzenle </button>
+										</div>
+
+										<div v-else>
+											<button id="block-page" v-on:click="kaydet()" class="btn btn-success"><i class="icon-checkmark3 mr-2"></i> Kaydet </button>
+										</div>
 									</div>
 								</div>
 
@@ -112,14 +119,15 @@
 					uploadImage: ""
 				},
 				temp: null,
-				image: "",
+				image: null,
 				existPost: null
 			},
 
 			methods: {
-				onEditorReady(){
+				onEditorReady() {
 					this.editorData = this.temp
 				},
+
 				selectImage(event) {
 					this.image = event.target.files[0];
 					this.post.uploadImage = this.image.name;
@@ -141,7 +149,9 @@
 						formImageData.append('image', this.image, this.image.name);
 						formImageData.append('data', JSON.stringify(this.post));
 
+
 						let url = '/cms/admin/postekle';
+
 
 						await axios.post(url,
 							formImageData, {
@@ -174,7 +184,72 @@
 						});
 
 					}
+				},
+
+				async edit() {
+
+					this.post.text = this.editorData;
+
+					var submitData = [{
+
+						id: this.post.id,
+						author: this.post.author,
+						categoryid: this.post.categoryid,
+						title: this.post.title,
+						message: this.post.message,
+						text: this.post.text,
+
+					}]
+
+
+					const formImageData = new FormData();
+
+					if (this.image != null) {
+
+						submitData.push({
+							uploadImage: this.post.uploadImage
+						});
+						formImageData.append('image', this.image, this.image.name);
+					}
+
+
+
+					formImageData.append('data', JSON.stringify(submitData));
+
+
+					let url = '/cms/admin/postEdit';
+
+					await axios.post(url,
+						formImageData, {
+							headers: {
+								'Content-Type': 'multipart/form-data'
+							}
+						}).then((result) => {
+						console.log(result.data)
+						switch (result.data.success) {
+							case 1:
+								Swal.fire(result.data.message, 'Başarılı!', 'success');
+								break;
+							case 2:
+								Swal.fire(result.data.message, 'Resmi Gözden Geçiriniz!', 'warning');
+								break;
+							case 3:
+								Swal.fire(result.data.message, 'Tekrar Deneyin!', 'error');
+								break;
+							default:
+								Swal.fire('Bilinmeyen Bir Hata!', '???', 'warning');
+						}
+
+
+
+					}).catch(e => {
+						console.log(e);
+					});
+
+
 				}
+
+
 			},
 
 			created() {},
@@ -183,7 +258,6 @@
 				if (this.existPost != null) {
 
 					var temp = JSON.parse(this.existPost);
-
 
 					var {
 						id,
