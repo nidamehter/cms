@@ -53,6 +53,7 @@
                 </div>
 
             </header>
+<<<<<<< HEAD
             <nav class="floating-menu ">
                 <ul class="main-menu">
                     <li>
@@ -76,6 +77,8 @@
                 </ul>
                 <div class="menu-bg"></div>
             </nav>
+=======
+>>>>>>> parent of d8c20c5 (blogmenu)
 
             <!-- Main Content-->
             <div class="container px-4 px-lg-5 top">
