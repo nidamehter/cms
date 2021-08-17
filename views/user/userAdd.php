@@ -1,4 +1,6 @@
-<?php require 'views/public/header.php'; ?>
+<?php require 'views/public/header.php';
+
+?>
 
 
 <div class="content-wrapper">
@@ -39,7 +41,7 @@
             </div>
 
             <div class="card-body" style="margin-left: 1px; height:auto">
-
+            <p ref="gelen" style="display:none"> <?php isset($user) ? print_r($user) : null ?></p>
                 <div>
                     <fieldset class="mb-12">
                         <legend class="text-uppercase font-size-sm font-weight-bold">Gerekli Bilgiler</legend>
@@ -93,7 +95,7 @@
                         <div class="form-group row input-group">
                             <label class="col-form-label col-lg-2">Aktif:</label>
                             <div class="col-lg-6">
-                                <div class="input-group-text"><input v-model="Vactive" type="checkbox" class="form-control"><i class="fas fa-check-circle"></i></div>
+                                <div class="input-group-text"><input :checked="Vactive" v-model="Vactive" type="checkbox" class="form-control"><i class="fas fa-check-circle"></i></div>
                             </div>
                         </div>
 
@@ -103,7 +105,13 @@
                             <label class="col-form-label col-lg-2 "></label>
                             <div class="col-lg-6">
                                 <div class="input-group-prepend">
+                                <?php if(isset($edit)): ?>  
+                                    <?php if($edit==1): ?> 
+                                        <input v-on:click="check_userEditForm" type="submit" value="edit" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                        <?php else : ?> 
                                     <input v-on:click="check_userAddForm" type="submit" value="Kaydet" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                    <?php endif; ?> 
+                                    <?php endif; ?> 
                                 </div>
                             </div>
                         </div>

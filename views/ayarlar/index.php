@@ -116,7 +116,6 @@
                                         <div id="menuAyar" class="box- menu-container">
                                             
                                             <p ref="gelen" style="display:none"> <?php isset($menus[0]['content']) ? print_r($menus[0]['content']) : null ?></p>
-                                            <p> </p>
 
                                             <div ref="menuRef">
                                                 <div class="tab-pane fade show active">

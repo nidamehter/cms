@@ -19,9 +19,9 @@ Route::run('/admin/login', 'login@loginSubmit', 'POST');
 
 Route::run('/admin/userAdd', 'user@index');
 Route::run('/admin/userAdd', 'user@add', 'POST');
-
 Route::run('/admin/userList', 'user@userList');
-Route::run('/admin/userEdit/{url}', 'user@edit', 'POST');       //Yok
+Route::run('/admin/userEdit/{url}', 'user@edit', 'GET'); 
+Route::run('/admin/userEdit', 'user@editSubmit', 'POST');       
 Route::run('/admin/userDelete/{url}', 'user@delete', 'GET');
 
 Route::run('/admin/postList', 'post@postList');

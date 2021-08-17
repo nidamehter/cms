@@ -1,18 +1,22 @@
 <?php
 
-class user extends Controller {
+class user extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $this->view('user/userAdd');
     }
 
-    public function userList() {
+    public function userList()
+    {
         $userModel = $this->model('users');
         $res = $userModel->listAll();
-        $this->view('user/userList',["users" => $res["result"]]);
+        $this->view('user/userList', ["users" => $res["result"]]);
     }
 
-    function add() {
+    function add()
+    {
         $postdata = file_get_contents("php://input");
         $reqData = json_decode($postdata, true);
 
@@ -30,11 +34,48 @@ class user extends Controller {
         echo json_encode((object)$results);
     }
 
-    function edit() {
+    function edit($id)
+    {
+       
+            $userModel = $this->model('users');
+            $user = $userModel->getUserById($id);
+            $this->view(
+                'user/userAdd',
+                [
+                    "user" =>  json_encode($user["result"]),
+                    "edit" =>  1
+
+                ]
+            );
+            
         
     }
 
-    function delete($id) {
+    public function editSubmit(){
+
+            $postdata = file_get_contents("php://input");
+            $reqData = json_decode($postdata, true);
+
+            $id=$reqData['id'];
+            $data = [
+                'name' => $reqData['name'],
+                'passwords' => $reqData['pass'],
+                'email' => $reqData['mail'],
+                'role' => $reqData['role'],
+                'active' => $reqData['active']
+            ];
+
+            $tableName = "users";
+            $userModel = $this->model("users");
+            $results = $userModel->editUser($tableName, $data, $id);
+            echo json_encode((object)$results);
+        
+
+
+    }
+
+    function delete($id)
+    {
         $userModel = $this->model("users");
         $results = $userModel->deleteUser($id);
         header("Location: /cms/admin/userList");

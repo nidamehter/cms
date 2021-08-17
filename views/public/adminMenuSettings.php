@@ -7,8 +7,8 @@ $menuler = [
         "icon" => "icon-copy",
         "subMenu" => [
             "admin/userList" => "Kullanıcılar",
-            "admin/userAdd" => "Kullanıcı Ekle",
-            "admin/userEdit" => "Kullanıcı Düzenle"
+            "admin/userAdd" => "Kullanıcı Ekle"
+          
         ]
     ],
     "kategori" => [
@@ -16,8 +16,8 @@ $menuler = [
         "icon" => "icon-color-sampler",
         "subMenu" => [
             "admin/categoryList" => "Kategoriler",
-            "admin/categoryAdd" => "Kategori Ekle",
-            "admin/categoryEdit" => "Kategori Düzenle"
+            "admin/categoryAdd" => "Kategori Ekle"
+           
         ]
     ],
     "post" => [
@@ -25,8 +25,7 @@ $menuler = [
         "icon" => "icon-puzzle",
         "subMenu" => [
             "admin/postList" => "Postlar",
-            "admin/postekle" => "Post Ekle",
-            "admin/postduzenle" => "Post Düzenle"
+            "admin/postekle" => "Post Ekle"
         ]
     ],
     "ayarlar" => [

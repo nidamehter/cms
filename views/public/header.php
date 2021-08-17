@@ -84,6 +84,7 @@
 				column-count: 5;
 			}
 		}
+
 	</style>
 </head>
 
@@ -440,15 +441,12 @@
 							</div>
 
 							<div class="media-body">
-								<div class="media-title font-weight-semibold">Victoria Baker</div>
+								<div class="media-title font-weight-semibold">Admin</div>
 								<div class="font-size-xs opacity-50">
 									<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
 								</div>
 							</div>
 
-							<div class="ml-3 align-self-center">
-								<a href="/cms/admin/Ayar" class="text-white"><i class="icon-cog3"></i></a>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -461,10 +459,10 @@
 
 						<!-- Main -->
 						<li class="nav-item-header">
-							<div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i>
+							<div class="text-uppercase font-size-xs line-height-xs">Menüler</div> <i class="icon-menu" title="Main"></i>
 						</li>
 						<li class="nav-item">
-							<a href="index.html" class="nav-link">
+							<a href="/cms/admin/postList" class="nav-link">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard

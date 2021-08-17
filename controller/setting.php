@@ -60,7 +60,7 @@ class setting extends Controller {
 
 
         if ($menusResponse['result'] < 1) {
-            echo json_encode(['success' => 0, 'message' => "Giriş Başarısız!", 'results' => ""]);
+            echo json_encode(['success' => 0, 'message' => "Menü Girişi Başarısız!", 'results' => ""]);
         }else{
             echo json_encode(['success' => 1, 'message' => "Menü Girişi Başarılı!", 'results' => $menusResponse]);
         }

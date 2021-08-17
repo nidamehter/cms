@@ -25,4 +25,20 @@ class users extends Model {
         return parent::Delete($query);
     }
 
+    public function getUserById($id){
+
+       $query= "select * from users where id=".$id.';';
+       $user = parent::get($query);
+       return $user;
+
+    }
+
+    public function editUser($table, $data, $id){
+
+        $query = UpdateQueryGenerator($table, json_encode($data),$id);
+        $results = parent::Update($query);
+        return $results;
+
+
+    }
 }
