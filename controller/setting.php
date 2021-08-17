@@ -24,7 +24,7 @@ class setting extends Controller {
             $menus[$key]['content'] =  json_decode($value['content'], JSON_FORCE_OBJECT);
 
         }
-        */
+*/
 
         $this->view("ayarlar/index", [
             'menus' => $menus,
@@ -61,8 +61,10 @@ class setting extends Controller {
 
         if ($menusResponse['result'] < 1) {
             echo json_encode(['success' => 0, 'message' => "Giriş Başarısız!", 'results' => ""]);
-        } else {
+        }else{
             echo json_encode(['success' => 1, 'message' => "Menü Girişi Başarılı!", 'results' => $menusResponse]);
         }
+
+
     }
 }

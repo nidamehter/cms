@@ -34,6 +34,8 @@
             background-image: url("assets/img/home-bg.jpg");
         }
 
+
+
         .floating-menu {
             border-radius: 100px;
             z-index: 999;

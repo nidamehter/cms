@@ -1,8 +1,7 @@
-<?php require "header.php";
+<?php require "header.php"; ?>
 
 
 
-?>
 
 
 <body>
@@ -10,7 +9,6 @@
 
     <div class="container-fluid">
         <!-- Navigation-->
-
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="index.html"><?= settings("blogName") ?></a>
@@ -106,7 +104,8 @@
                                             <?php foreach ($blogCategoryData as $key => $value) : ?>
 
                                                 <div class="list-group <?= $value['caturl'] == getLastPath(1) ? 'active' : null ?>">
-                                                    <a class="list-group-item list-group-item-action" href="#list-iem-1" v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
+                                                    <a class="list-group-item list-group-item-action" href="#list-i
+                                                            em-1" v-on:click.prevent="getPosts" data-id="<?= $value['caturl'] ?>">
                                                         <span class="far fa-bookmark"></span> <?= $value['name']; ?>
                                                     </a>
                                                 </div>
