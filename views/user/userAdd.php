@@ -1,5 +1,4 @@
 <?php require 'views/public/header.php';
-
 ?>
 
 

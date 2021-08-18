@@ -89,14 +89,42 @@ class category extends Controller {
             }
         }
     }
+ 
+    function edit($id)
+    {
 
-    public function edit() {
-        $catmodel = $this->model("categories");
-        $categories = $catmodel->getall();
-        $this->view('category/categoryEdit', [
-            'kategoriler' => $categories
-        ]);
+       $catModel = $this->model('categories');
+            $category = $catModel->getCategoryById($id);
+
+            $this->view(
+                'category/categoryAdd',
+                [
+                    "category" => json_encode($category["result"],JSON_UNESCAPED_UNICODE),
+                    "edit" =>  1
+                ]
+            );          
     }
+    public function editSubmit(){
+
+        $postdata = file_get_contents("php://input");
+        $catdata = json_decode($postdata, true);
+
+
+        $id= $catdata ['id'];
+        $data = [
+            'name' =>  $catdata ['name'],
+            'caturl' =>  $catdata ['caturl'],
+            'description' =>  $catdata ['description'],
+            'active' =>  $catdata ['active']
+        ];
+
+        $tableName = "category";
+        $userModel = $this->model("categories");
+        $results = $userModel->editCategory($tableName, $data, $id);
+        echo json_encode((object)$results);
+
+}
+
 
     function delete($id) {
         $userModel = $this->model("categories");

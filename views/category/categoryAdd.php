@@ -1,4 +1,6 @@
-<?php require 'views/public/header.php'; ?>
+<?php require 'views/public/header.php';
+
+?>
 
 <div class="content-wrapper">
 
@@ -42,7 +44,7 @@
                 <div>
                     <fieldset class="mb-12">
                         <legend class="text-uppercase font-size-sm font-weight-bold">Gerekli Bilgiler</legend>
-
+                        <p ref="gelen" style="display:none"> <?php isset($category) ? print_r($category) : null ?></p>
                         <div class="form-group row input-group">
                             <label class="col-form-label col-lg-2">Kategori Adı:</label>
                             <div class="col-lg-6">
@@ -75,7 +77,7 @@
                         </div>
 
                         <div class="form-group row">
-                        <label class="col-form-label col-lg-2">Resim Ekle:</label>
+                            <label class="col-form-label col-lg-2">Resim Ekle:</label>
                             <div class="col-lg-6" v-cloak @drop.prevent="selectImageDrag" @dragover.prevent>
                                 <input type="file" class="file-input" data-fouc @change="selectImage">
                                 <span class="form-text text-muted"></span>
@@ -86,7 +88,7 @@
                         <div class="form-group row input-group">
                             <label class="col-form-label col-lg-2">Aktif:</label>
                             <div class="col-lg-6">
-                                <div class="input-group-text"><input v-model="post.VcategoryActive" type="checkbox" class="form-control"><i class="fas fa-check-circle"></i></div>
+                                <div class="input-group-text"><input :checked="post.VcategoryActive" v-model="post.VcategoryActive" type="checkbox" class="form-control"><i class="fas fa-check-circle"></i></div>
                             </div>
                         </div>
 
@@ -96,7 +98,13 @@
                             <label class="col-form-label col-lg-2 "></label>
                             <div class="col-lg-6">
                                 <div class="input-group-prepend">
-                                    <input v-on:click="kaydet()" type="submit" value="Kaydet" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                    <?php if (isset($edit)) : ?>
+                                        <?php if ($edit == 1) : ?>
+                                            <input v-on:click="userEditForm()" type="submit" value="edit" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                        <?php else : ?>
+                                            <input v-on:click="kaydet()" type="submit" value="Kaydet" style="margin-left: 35%; margin-right: 35%" class="form-submit btn btn-success h-100">
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

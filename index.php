@@ -36,7 +36,9 @@ Route::run('/admin/categoryList', 'category@list');
 Route::run('/admin/categoryAdd', 'category@index');
 Route::run('/admin/categoryAdd', 'category@add', 'POST');
 Route::run('/admin/categoryDelete/{url}', 'category@delete', 'GET');
-Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');        //Yok
+Route::run('/admin/categoryEdit/{url}', 'category@edit', 'GET');   
+Route::run('/admin/categoryEdit', 'category@editSubmit', 'POST');
+
 
 Route::run('/admin/Ayar', 'setting@index');
 Route::run('/admin/ayarBlog', 'setting@ayarBlog', "POST");

@@ -59,7 +59,7 @@
                                         <a href="/cms/views/blog/upload/<?= $value["uploadedImageName"]; ?>" class="btn btn-outline bg-white text-white border-white border-2" data-popup="lightbox">
                                             İncele
                                         </a>
-                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2">
+                                        <a href="/cms/views/blog/upload/<?= $value["uploadedImageName"]; ?>" class="btn btn-outline bg-white text-white border-white border-2 ml-2">
                                             Detaylar
                                         </a>
                                     </div>

@@ -39,6 +39,7 @@ class user extends Controller
        
             $userModel = $this->model('users');
             $user = $userModel->getUserById($id);
+            
             $this->view(
                 'user/userAdd',
                 [

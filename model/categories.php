@@ -13,6 +13,20 @@ class categories extends Model {
         return $results;
     }
 
+    public function getCategoryById($id){
+
+        $query= "select * from category where id=".$id.';';
+        $category = parent::get($query);
+        return $category ;
+     }
+
+     public function editCategory($table, $data, $id){
+
+        $query = UpdateQueryGenerator($table, json_encode($data),$id);
+        $results = parent::Update($query);
+        return $results;
+    }
+
 
     public function deleteCategory($id) {
         $query = "DELETE FROM category where id=" . $id;

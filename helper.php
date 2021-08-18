@@ -200,7 +200,7 @@ function imageSave($name)
         if (empty($error)) {
 
             if ($iminfo[0] > 800 && $iminfo[1] > 600) {
-                imageTransform($target, $target, [900, 600, false, 0, 100]);
+                imageTransform($target, $target, [300, 150, false, 0, 100]);
             }
             return 1;
             exit;
