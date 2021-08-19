@@ -9,6 +9,7 @@ class posts extends Model {
 
   function kayit($name, $data) {
     $query = parent::InsertQueryGenerator($name, json_encode($data));
+
     $results = parent::Insert($query);
     return $results;
   }
@@ -25,14 +26,12 @@ class posts extends Model {
     return $categories;
   }
 
-  public function editPosts($table, $data, $id){
+  public function editPosts($table, $data, $id) {
 
-    $query = UpdateQueryGenerator($table, json_encode($data),$id);
+    $query = UpdateQueryGenerator($table, json_encode($data), $id);
     $results = parent::Update($query);
     return $results;
-
-
-}
+  }
 
 
   public function deletePost($id) {

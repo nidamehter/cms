@@ -1,21 +1,17 @@
 <?php
 
-class post extends Controller
-{
+class post extends Controller {
 
-    public function index()
-    {
+    public function index() {
         $postmodel = $this->model("posts");
         $category = $postmodel->category();
 
-        $this->view('post/index', [
+        $this->view('post/postAdd', [
             "categories" => $category["result"]
         ]);
     }
 
-
-    function postList()
-    {
+    function postList() {
 
         $postmodel = $this->model("posts");
         $posts = $postmodel->getAll();
@@ -25,13 +21,7 @@ class post extends Controller
         ]);
     }
 
-    function kaydet()
-    {
-
-        /* Sadece RAW json data alabiliyor.
-        $postdata = file_get_contents("php://input");
-        $data = json_decode($postdata, true);
-        */
+    function kaydet() {
 
         $data = json_decode($_POST['data'], true);
 
@@ -40,13 +30,14 @@ class post extends Controller
             'categoryid' => $data['categoryid'],
             'title' => $data['title'],
             'message' => $data['message'],
-            'text' => $data['text'],
+            'text' =>  htmlentities($data['text'], ENT_QUOTES, "UTF-8"),  //ENTITY ENCODE
             'created' => date('Y-m-d H:i:s', time()),
             'uploadedImageName' => $data['uploadImage']
         );
 
         $postModel = $this->model("posts");
         $model =   $postModel->kayit("posts", $saveData);
+
 
         if ($model['result'] < 1) {
             echo json_encode(["success" => 3, "message" => "Hiçbir post/resim kaydedilemedi."]);
@@ -63,31 +54,24 @@ class post extends Controller
     }
 
 
-    function edit($id)
-    {
+    function edit($id) {
 
         $postmodel = $this->model("posts");
         $posts = $postmodel->getOneRecord($id);
-        $posts["result"][0]['text']  = htmlspecialchars($posts["result"][0]['text']);
+        //$posts["result"][0]['text']  =  html_entity_decode($posts["result"][0]['text'], ENT_QUOTES, "UTF-8");
 
         $category = $postmodel->category();
 
-        $this->view('post/index', [
+        $this->view('post/postAdd', [
             "post" => json_encode($posts["result"], JSON_UNESCAPED_UNICODE),
             "categories" => $category["result"]
         ]);
     }
 
-    function editSubmit()
-    {
+    function editSubmit() {
 
         $editedData = json_decode($_POST['data'], true);
-
         $reqData = $editedData[0];
-
-
-
-
 
         $id = $reqData['id'];
         $data = [
@@ -95,16 +79,17 @@ class post extends Controller
             'categoryid' => $reqData['categoryid'],
             'title' => $reqData['title'],
             'message' => $reqData['message'],
-            'text' => $reqData['text'],
+            'text' => htmlentities($reqData['text'], ENT_QUOTES, "UTF-8"),  //ENTITY ENCODE
             'created' => date('Y-m-d H:i:s', time()),
-
         ];
 
-
+    
+        //Eğer düzenleme yaparken fazladan resim gelmişse updateliyoruz
         if (isset($editedData[1])) {
             $data['uploadedImageName'] =  $editedData[1]['uploadImage'];
         }
 
+        //Eğer gelen post verisinde $_FILES['image'] varsa kaydediyoruz.
         $imageResult = imageSave('image');
 
         $tableName = "posts";
@@ -115,15 +100,12 @@ class post extends Controller
             echo json_encode(["success" => 1, "message" => "Düzenleme Başarılı", "error" => 0]);
         } else if ($imageResult == 2) {
             echo json_encode(["success" => 2, "message" => "Resim eklemede eksik olabilir!", "error" => 1]);
-        } else if ($editResult["result"] < 1) {
+        } else if ($editResult["message"] < 1) {
             echo json_encode(["success" => 3, "message" => "Düzenlemede hata!", "error" => 1]);
         }
     }
 
-
-
-    function delete($id)
-    {
+    function delete($id) {
         $userModel = $this->model("posts");
         $results = $userModel->deletePost($id);
         header("Location: /cms/admin/postList");

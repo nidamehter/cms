@@ -3,28 +3,24 @@ require "siteSettings.php";
 
 define("PATH", realpath('.'));
 
-function getLastPath($number = 0)
-{
+function getLastPath($number = 0) {
     $lastPath = explode("/", $_SERVER['REQUEST_URI']);
     $index = count($lastPath) - $number;
     return $lastPath[$index];
 }
 
-function settings($name)
-{
+function settings($name) {
     global $setting;
     return (isset($setting[$name]) ? $setting[$name] : false);
 }
 
-function session($name)
-{
+function session($name) {
     if (isset($_SESSION[$name])) {
         return $_SESSION[$name];
     }
 }
 
-function sPost($name)
-{
+function sPost($name) {
     if (isset($_POST[$name])) {
         if (is_array($_POST[$name])) {
             return array_map(function ($item) {
@@ -36,8 +32,7 @@ function sPost($name)
     }
 }
 
-function sChar($arr)
-{
+function sChar($arr) {
     if (isset($arr)) {
         if (is_array($arr)) {
             return array_map(function ($item) {
@@ -49,15 +44,13 @@ function sChar($arr)
 }
 
 
-function post($name)
-{
+function post($name) {
     if (isset($_POST[$name])) {
         return htmlspecialchars(trim($_POST[$name]));
     }
 }
 
-function slugit($str, $replace = array(), $delimiter = '-')
-{
+function slugit($str, $replace = array(), $delimiter = '-') {
     if (!empty($replace)) {
         $str = str_replace((array)$replace, ' ', $str);
     }
@@ -68,8 +61,7 @@ function slugit($str, $replace = array(), $delimiter = '-')
     return $clean;
 }
 
-function UpdateQueryGenerator($table, $model, $id)
-{
+function UpdateQueryGenerator($table, $model, $id) {
     $keys = array();
     $values = array();
 
@@ -90,8 +82,7 @@ function UpdateQueryGenerator($table, $model, $id)
     return $query;
 }
 
-function UpdateQueryGeneratorMenu($table, $model, $title)
-{
+function UpdateQueryGeneratorMenu($table, $model, $title) {
     $keys = array();
     $values = array();
 
@@ -113,8 +104,7 @@ function UpdateQueryGeneratorMenu($table, $model, $title)
     return $query;
 }
 
-function InsertQueryGenerator($table, $model)
-{
+function InsertQueryGenerator($table, $model) {
     $keys = array();
     $values = array();
 
@@ -144,8 +134,7 @@ function InsertQueryGenerator($table, $model)
     return $query;
 }
 
-function GenerateRandomCode($n = 11)
-{
+function GenerateRandomCode($n = 11) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
     for ($i = 0; $i < $n; $i++) {
@@ -156,8 +145,7 @@ function GenerateRandomCode($n = 11)
 }
 
 
-function imageSave($name)
-{
+function imageSave($name) {
 
     if (isset($_FILES[$name])) {
         $error  = false;
@@ -227,8 +215,7 @@ function imageSave($name)
  * @param array $dim [Width, Height, AspectRatio(True|False), Rotate, Quality]
  * @author "Codetalker&Blitzkrieg"
  * */
-function imageTransform($src, $dest, $dim)
-{
+function imageTransform($src, $dest, $dim) {
 
     $imager = new Zebra_Image();
 

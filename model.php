@@ -71,7 +71,7 @@ class Model extends Database {
 
                 $this->result = [
                     "success" => true,
-                    "message" => $result->rowCount() . " rows updated..",
+                    "message" => $result->rowCount(),
                 ];
                 return $this->result;
             } else {
